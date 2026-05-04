@@ -1,281 +1,367 @@
-<svg width="100%" viewBox="0 0 680 580" role="img" xmlns="http://www.w3.org/2000/svg">
+<svg width="100%" viewBox="0 0 680 600" role="img" xmlns="http://www.w3.org/2000/svg">
 <title>SHETRENGAW piece movement reference</title>
-<desc>Movement diagrams for all six piece types showing squares each piece can reach from its starting position.</desc>
+<desc>Movement diagrams for all six piece types. Each diagram shows a 5x5 grid with the piece at center. Gold squares show where the piece can move or capture. Red squares show capture-only squares. Dark gold squares show RAWDAW-only moves.</desc>
 <defs>
   <style>
-    .tt  { font-family:Georgia,serif; font-size:13px; font-weight:bold; fill:#2C1A08; text-anchor:middle; }
-    .sub { font-family:Georgia,serif; font-size:9px;  fill:#4a3020; text-anchor:middle; }
-    .lab { font-family:Georgia,serif; font-size:10px; font-weight:bold; fill:#2C1A08; text-anchor:middle; dominant-baseline:central; }
-    .lsm { font-family:Georgia,serif; font-size:8px;  fill:#4a3020; text-anchor:middle; dominant-baseline:central; }
-    .note{ font-family:Georgia,serif; font-size:8px;  fill:#7a6030; text-anchor:middle; font-style:italic; }
+    .tt  { font-family:Georgia,serif; font-size:13px; font-weight:bold; fill:#c9a84c; text-anchor:middle; }
+    .sub { font-family:Georgia,serif; font-size:9px;  fill:#a09070; text-anchor:middle; }
+    .note{ font-family:Georgia,serif; font-size:8.5px; fill:#a09070; text-anchor:middle; font-style:italic; }
+    .leg { font-family:Georgia,serif; font-size:9px;  fill:#a09070; dominant-baseline:central; }
+    .hdr { font-family:Georgia,serif; font-size:14px; font-weight:bold; fill:#c9a84c; text-anchor:middle; }
   </style>
 </defs>
-<rect width="680" height="580" fill="#1a1209"/>
-<text class="tt" x="340" y="22">Piece Movement Reference — Porawt</text>
 
-<!-- ═══ Layout: 3 columns x 2 rows of movement grids ═══ -->
-<!-- Grid cell size: 14px squares, 5x5 grid = 70px, plus labels -->
-<!-- Col starts: 28, 258, 488  Row starts: 38, 310 -->
-<!-- sq=14, piece=center of 3x3 at (2,2)=col2,row2 -->
+<!-- Background -->
+<rect width="680" height="600" fill="#1a1209"/>
 
-<!-- COLOR KEY: piece=dark gold, reachable=tan, blocked=dark, special=olive -->
+<!-- Title -->
+<text class="hdr" x="340" y="24">Piece Movement Reference — Porawt</text>
 
-<!-- ─── RAWD / RAWDAW ─── col 1, row 1 ─────────────────── -->
-<text class="lab" x="148" y="50">RAWD</text>
-<text class="sub" x="148" y="63">Igto: RAWDAW — Mawdige: RAJA</text>
-<!-- 5x5 grid at x=85, y=72, sq=24 -->
-<!-- RAWDAW moves: fwd(up), fwd-diag, sideways, back-diag (NOT back) -->
-<!-- center at col2,row2 = (85+2*24+12, 72+2*24+12) = (145,144) -->
-<!-- reachable from center: row1c1,row1c2,row1c3, row2c1,row2c3, row3c1,row3c3 = all 8 dirs except straight back -->
-<g>
-  <!-- grid squares -->
-  <rect x="85"  y="72"  width="24" height="24" fill="#4a2e10"/><rect x="109" y="72"  width="24" height="24" fill="#6b4423"/>
-  <rect x="133" y="72"  width="24" height="24" fill="#4a2e10"/><rect x="157" y="72"  width="24" height="24" fill="#6b4423"/>
-  <rect x="181" y="72"  width="24" height="24" fill="#4a2e10"/>
-  <rect x="85"  y="96"  width="24" height="24" fill="#6b4423"/><rect x="109" y="96"  width="24" height="24" fill="#4a2e10"/>
-  <rect x="133" y="96"  width="24" height="24" fill="#6b4423"/><rect x="157" y="96"  width="24" height="24" fill="#4a2e10"/>
-  <rect x="181" y="96"  width="24" height="24" fill="#6b4423"/>
-  <rect x="85"  y="120" width="24" height="24" fill="#4a2e10"/><rect x="109" y="120" width="24" height="24" fill="#6b4423"/>
-  <rect x="133" y="120" width="24" height="24" fill="#4a2e10"/><!-- piece -->
-  <rect x="157" y="120" width="24" height="24" fill="#6b4423"/><rect x="181" y="120" width="24" height="24" fill="#4a2e10"/>
-  <rect x="85"  y="144" width="24" height="24" fill="#6b4423"/><rect x="109" y="144" width="24" height="24" fill="#4a2e10"/>
-  <rect x="133" y="144" width="24" height="24" fill="#6b4423"/><!-- blocked for RAJA -->
-  <rect x="157" y="144" width="24" height="24" fill="#4a2e10"/><rect x="181" y="144" width="24" height="24" fill="#6b4423"/>
-  <rect x="85"  y="168" width="24" height="24" fill="#4a2e10"/><rect x="109" y="168" width="24" height="24" fill="#6b4423"/>
-  <rect x="133" y="168" width="24" height="24" fill="#4a2e10"/><rect x="157" y="168" width="24" height="24" fill="#6b4423"/>
-  <rect x="181" y="168" width="24" height="24" fill="#4a2e10"/>
-  <!-- reachable squares (both RAWDAW and RAJA): row0 all 3 middle, row1 sides, row3 sides for RAWDAW -->
-  <rect x="109" y="72"  width="24" height="24" fill="#c9a84c" opacity="0.7"/><!-- fwd -->
-  <rect x="85"  y="72"  width="24" height="24" fill="#c9a84c" opacity="0.5"/><!-- fwd-diag L -->
-  <rect x="157" y="72"  width="24" height="24" fill="#c9a84c" opacity="0.5"/><!-- fwd-diag R wait - using col notation -->
-  <!-- let me redo with proper 5-col indexing c0..c4 left-right, r0..r4 top-bottom -->
-  <!-- piece at c2,r2. fwd=up=r1. RAWDAW: r1c1,r1c2,r1c3, r2c1,r2c3, r3c1,r3c3 = all except r3c2(back) -->
-  <!-- RAJA: same minus r3c1,r3c3 -->
+<!-- ═══════════════════════════════════════════════════════
+     GRID HELPER: 5x5, sq=24, uniform dark fill for empties
+     Empty sq: #2e2010  Piece: #b8860b  Move: #c9a84c (bright)
+     Capture-only: #c44a4a  RAWDAW-only: #8b6914
+     ═══════════════════════════════════════════════════════ -->
+
+<!-- ─── RAWD / RAWDAW ─── x=60, y=42 ─────────────────── -->
+<text class="tt"  x="180" y="44">RAWD</text>
+<text class="sub" x="180" y="56">Igto: RAWDAW · Mawdige: RAJA</text>
+
+<!-- 5x5 grid, all empty = #2e2010 -->
+<g fill="#2e2010" stroke="#1a1209" stroke-width="1">
+  <rect x="60"  y="62"  width="24" height="24"/>
+  <rect x="84"  y="62"  width="24" height="24"/>
+  <rect x="108" y="62"  width="24" height="24"/>
+  <rect x="132" y="62"  width="24" height="24"/>
+  <rect x="156" y="62"  width="24" height="24"/>
+  <rect x="60"  y="86"  width="24" height="24"/>
+  <rect x="84"  y="86"  width="24" height="24"/>
+  <rect x="108" y="86"  width="24" height="24"/>
+  <rect x="132" y="86"  width="24" height="24"/>
+  <rect x="156" y="86"  width="24" height="24"/>
+  <rect x="60"  y="110" width="24" height="24"/>
+  <rect x="84"  y="110" width="24" height="24"/>
+  <rect x="108" y="110" width="24" height="24"/><!-- piece -->
+  <rect x="132" y="110" width="24" height="24"/>
+  <rect x="156" y="110" width="24" height="24"/>
+  <rect x="60"  y="134" width="24" height="24"/>
+  <rect x="84"  y="134" width="24" height="24"/>
+  <rect x="108" y="134" width="24" height="24"/>
+  <rect x="132" y="134" width="24" height="24"/>
+  <rect x="156" y="134" width="24" height="24"/>
+  <rect x="60"  y="158" width="24" height="24"/>
+  <rect x="84"  y="158" width="24" height="24"/>
+  <rect x="108" y="158" width="24" height="24"/>
+  <rect x="132" y="158" width="24" height="24"/>
+  <rect x="156" y="158" width="24" height="24"/>
 </g>
-<!-- Redo cleanly with explicit coords -->
-<!-- piece center r2c2: x=133+12=145, y=120+12=132 -->
-<!-- RAWDAW reachable: (r1c1)=109,96  (r1c2)=133,96  (r1c3)=157,96 -->
-<!--                   (r2c1)=85,120             (r2c3)=181,120 -->
-<!--                   (r3c1)=85,144  (RAJA:blocked) (r3c3)=181,144 (RAJA: blocked) -->
-<!-- RAJA extra blocked: (r3c2)=133,144 also blocked -->
-<rect x="109" y="96"  width="24" height="24" fill="#c9a84c" opacity="0.75"/>
-<rect x="133" y="96"  width="24" height="24" fill="#c9a84c" opacity="0.75"/>
-<rect x="157" y="96"  width="24" height="24" fill="#c9a84c" opacity="0.75"/>
-<rect x="85"  y="120" width="24" height="24" fill="#c9a84c" opacity="0.75"/>
-<rect x="181" y="120" width="24" height="24" fill="#c9a84c" opacity="0.75"/>
-<!-- RAWDAW back-diag only (gold, RAJA cannot) -->
-<rect x="109" y="144" width="24" height="24" fill="#8b6914" opacity="0.8"/>
-<rect x="157" y="144" width="24" height="24" fill="#8b6914" opacity="0.8"/>
+<!-- shared moves (both RAWDAW and RAJA): fwd, fwd-diag x2, sideways x2 -->
+<rect x="84"  y="86"  width="24" height="24" fill="#c9a84c"/><!-- fwd-diag L -->
+<rect x="108" y="86"  width="24" height="24" fill="#c9a84c"/><!-- fwd -->
+<rect x="132" y="86"  width="24" height="24" fill="#c9a84c"/><!-- fwd-diag R -->
+<rect x="60"  y="110" width="24" height="24" fill="#c9a84c"/><!-- left -->
+<rect x="156" y="110" width="24" height="24" fill="#c9a84c"/><!-- right -->
+<!-- RAWDAW only: back-diag -->
+<rect x="84"  y="134" width="24" height="24" fill="#8b6914"/>
+<rect x="132" y="134" width="24" height="24" fill="#8b6914"/>
 <!-- piece -->
-<rect x="133" y="120" width="24" height="24" fill="#b8860b"/>
-<text class="lab" x="145" y="132">RD</text>
-<text class="note" x="145" y="202">gold = RAWDAW only</text>
-<text class="note" x="145" y="212">tan = both leaders</text>
+<rect x="108" y="110" width="24" height="24" fill="#b8860b"/>
+<text style="font-family:Georgia,serif;font-size:9px;font-weight:bold;fill:#1a1209;text-anchor:middle;dominant-baseline:central" x="120" y="122">RD</text>
+
+<!-- arrow: fwd direction indicator -->
+<text style="font-family:Georgia,serif;font-size:8px;fill:#7a6030;text-anchor:middle" x="120" y="198">↑ forward (Igto perspective)</text>
+<text class="note" x="120" y="210">gold = both · dark gold = RAWDAW only</text>
+<text class="note" x="120" y="222">RAJA cannot move back-diagonal</text>
 
 
-<!-- ─── POR ─── col 2, row 1 ─────────────────── -->
-<text class="lab" x="378" y="50">POR</text>
-<text class="sub" x="378" y="63">Igto: PORLE — Mawdige: STENAPTI</text>
-<!-- 5x5 grid x=315 y=72 sq=24, bishop-style: all diagonals -->
-<g>
-  <rect x="315" y="72"  width="24" height="24" fill="#4a2e10"/><rect x="339" y="72"  width="24" height="24" fill="#6b4423"/>
-  <rect x="363" y="72"  width="24" height="24" fill="#4a2e10"/><rect x="387" y="72"  width="24" height="24" fill="#6b4423"/>
-  <rect x="411" y="72"  width="24" height="24" fill="#4a2e10"/>
-  <rect x="315" y="96"  width="24" height="24" fill="#6b4423"/><rect x="339" y="96"  width="24" height="24" fill="#4a2e10"/>
-  <rect x="363" y="96"  width="24" height="24" fill="#6b4423"/><rect x="387" y="96"  width="24" height="24" fill="#4a2e10"/>
-  <rect x="411" y="96"  width="24" height="24" fill="#6b4423"/>
-  <rect x="315" y="120" width="24" height="24" fill="#4a2e10"/><rect x="339" y="120" width="24" height="24" fill="#6b4423"/>
-  <rect x="363" y="120" width="24" height="24" fill="#4a2e10"/>
-  <rect x="387" y="120" width="24" height="24" fill="#6b4423"/><rect x="411" y="120" width="24" height="24" fill="#4a2e10"/>
-  <rect x="315" y="144" width="24" height="24" fill="#6b4423"/><rect x="339" y="144" width="24" height="24" fill="#4a2e10"/>
-  <rect x="363" y="144" width="24" height="24" fill="#6b4423"/><rect x="387" y="144" width="24" height="24" fill="#4a2e10"/>
-  <rect x="411" y="144" width="24" height="24" fill="#6b4423"/>
-  <rect x="315" y="168" width="24" height="24" fill="#4a2e10"/><rect x="339" y="168" width="24" height="24" fill="#6b4423"/>
-  <rect x="363" y="168" width="24" height="24" fill="#4a2e10"/><rect x="387" y="168" width="24" height="24" fill="#6b4423"/>
-  <rect x="411" y="168" width="24" height="24" fill="#4a2e10"/>
+<!-- ─── POR ─── x=290, y=42 ─────────────────── -->
+<text class="tt"  x="410" y="44">POR</text>
+<text class="sub" x="410" y="56">Igto: PORLE · Mawdige: STENAPTI</text>
+
+<g fill="#2e2010" stroke="#1a1209" stroke-width="1">
+  <rect x="290" y="62"  width="24" height="24"/>
+  <rect x="314" y="62"  width="24" height="24"/>
+  <rect x="338" y="62"  width="24" height="24"/>
+  <rect x="362" y="62"  width="24" height="24"/>
+  <rect x="386" y="62"  width="24" height="24"/>
+  <rect x="290" y="86"  width="24" height="24"/>
+  <rect x="314" y="86"  width="24" height="24"/>
+  <rect x="338" y="86"  width="24" height="24"/>
+  <rect x="362" y="86"  width="24" height="24"/>
+  <rect x="386" y="86"  width="24" height="24"/>
+  <rect x="290" y="110" width="24" height="24"/>
+  <rect x="314" y="110" width="24" height="24"/>
+  <rect x="338" y="110" width="24" height="24"/><!-- piece -->
+  <rect x="362" y="110" width="24" height="24"/>
+  <rect x="386" y="110" width="24" height="24"/>
+  <rect x="290" y="134" width="24" height="24"/>
+  <rect x="314" y="134" width="24" height="24"/>
+  <rect x="338" y="134" width="24" height="24"/>
+  <rect x="362" y="134" width="24" height="24"/>
+  <rect x="386" y="134" width="24" height="24"/>
+  <rect x="290" y="158" width="24" height="24"/>
+  <rect x="314" y="158" width="24" height="24"/>
+  <rect x="338" y="158" width="24" height="24"/>
+  <rect x="362" y="158" width="24" height="24"/>
+  <rect x="386" y="158" width="24" height="24"/>
 </g>
-<!-- diagonal reachables -->
-<rect x="315" y="72"  width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="411" y="72"  width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="339" y="96"  width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="387" y="96"  width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="339" y="144" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="387" y="144" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="315" y="168" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="411" y="168" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
+<!-- diagonal squares -->
+<rect x="290" y="62"  width="24" height="24" fill="#c9a84c"/>
+<rect x="386" y="62"  width="24" height="24" fill="#c9a84c"/>
+<rect x="314" y="86"  width="24" height="24" fill="#c9a84c"/>
+<rect x="362" y="86"  width="24" height="24" fill="#c9a84c"/>
+<rect x="314" y="134" width="24" height="24" fill="#c9a84c"/>
+<rect x="362" y="134" width="24" height="24" fill="#c9a84c"/>
+<rect x="290" y="158" width="24" height="24" fill="#c9a84c"/>
+<rect x="386" y="158" width="24" height="24" fill="#c9a84c"/>
 <!-- piece -->
-<rect x="363" y="120" width="24" height="24" fill="#b8860b"/>
-<text class="lab" x="375" y="132">PO</text>
-<text class="note" x="378" y="207">unlimited diagonals</text>
-<text class="note" x="378" y="217">color-bound</text>
+<rect x="338" y="110" width="24" height="24" fill="#b8860b"/>
+<text style="font-family:Georgia,serif;font-size:9px;font-weight:bold;fill:#1a1209;text-anchor:middle;dominant-baseline:central" x="350" y="122">PO</text>
+
+<text class="note" x="350" y="198">unlimited diagonals</text>
+<text class="note" x="350" y="210">blocked by any piece in path</text>
+<text class="note" x="350" y="222">permanently color-bound</text>
 
 
-<!-- ─── RATHAW ─── col 3, row 1 ─────────────────── -->
-<text class="lab" x="610" y="50">RATHAW</text>
-<text class="sub" x="610" y="63">both sides</text>
-<!-- 5x5 grid x=547 y=72 sq=24, rook-style -->
-<g>
-  <rect x="547" y="72"  width="24" height="24" fill="#4a2e10"/><rect x="571" y="72"  width="24" height="24" fill="#6b4423"/>
-  <rect x="595" y="72"  width="24" height="24" fill="#4a2e10"/><rect x="619" y="72"  width="24" height="24" fill="#6b4423"/>
-  <rect x="643" y="72"  width="24" height="24" fill="#4a2e10"/>
-  <rect x="547" y="96"  width="24" height="24" fill="#6b4423"/><rect x="571" y="96"  width="24" height="24" fill="#4a2e10"/>
-  <rect x="595" y="96"  width="24" height="24" fill="#6b4423"/><rect x="619" y="96"  width="24" height="24" fill="#4a2e10"/>
-  <rect x="643" y="96"  width="24" height="24" fill="#6b4423"/>
-  <rect x="547" y="120" width="24" height="24" fill="#4a2e10"/><rect x="571" y="120" width="24" height="24" fill="#6b4423"/>
-  <rect x="595" y="120" width="24" height="24" fill="#4a2e10"/>
-  <rect x="619" y="120" width="24" height="24" fill="#6b4423"/><rect x="643" y="120" width="24" height="24" fill="#4a2e10"/>
-  <rect x="547" y="144" width="24" height="24" fill="#6b4423"/><rect x="571" y="144" width="24" height="24" fill="#4a2e10"/>
-  <rect x="595" y="144" width="24" height="24" fill="#6b4423"/><rect x="619" y="144" width="24" height="24" fill="#4a2e10"/>
-  <rect x="643" y="144" width="24" height="24" fill="#6b4423"/>
-  <rect x="547" y="168" width="24" height="24" fill="#4a2e10"/><rect x="571" y="168" width="24" height="24" fill="#6b4423"/>
-  <rect x="595" y="168" width="24" height="24" fill="#4a2e10"/><rect x="619" y="168" width="24" height="24" fill="#6b4423"/>
-  <rect x="643" y="168" width="24" height="24" fill="#4a2e10"/>
+<!-- ─── RATHAW ─── x=520, y=42 ─────────────────── -->
+<text class="tt"  x="640" y="44">RATHAW</text>
+<text class="sub" x="640" y="56">both sides</text>
+
+<g fill="#2e2010" stroke="#1a1209" stroke-width="1">
+  <rect x="520" y="62"  width="24" height="24"/>
+  <rect x="544" y="62"  width="24" height="24"/>
+  <rect x="568" y="62"  width="24" height="24"/>
+  <rect x="592" y="62"  width="24" height="24"/>
+  <rect x="616" y="62"  width="24" height="24"/>
+  <rect x="520" y="86"  width="24" height="24"/>
+  <rect x="544" y="86"  width="24" height="24"/>
+  <rect x="568" y="86"  width="24" height="24"/>
+  <rect x="592" y="86"  width="24" height="24"/>
+  <rect x="616" y="86"  width="24" height="24"/>
+  <rect x="520" y="110" width="24" height="24"/>
+  <rect x="544" y="110" width="24" height="24"/>
+  <rect x="568" y="110" width="24" height="24"/><!-- piece -->
+  <rect x="592" y="110" width="24" height="24"/>
+  <rect x="616" y="110" width="24" height="24"/>
+  <rect x="520" y="134" width="24" height="24"/>
+  <rect x="544" y="134" width="24" height="24"/>
+  <rect x="568" y="134" width="24" height="24"/>
+  <rect x="592" y="134" width="24" height="24"/>
+  <rect x="616" y="134" width="24" height="24"/>
+  <rect x="520" y="158" width="24" height="24"/>
+  <rect x="544" y="158" width="24" height="24"/>
+  <rect x="568" y="158" width="24" height="24"/>
+  <rect x="592" y="158" width="24" height="24"/>
+  <rect x="616" y="158" width="24" height="24"/>
 </g>
-<!-- orthogonal reachables -->
-<rect x="595" y="72"  width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="595" y="96"  width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="547" y="120" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="571" y="120" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="619" y="120" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="643" y="120" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="595" y="144" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="595" y="168" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
+<!-- orthogonal squares -->
+<rect x="568" y="62"  width="24" height="24" fill="#c9a84c"/>
+<rect x="568" y="86"  width="24" height="24" fill="#c9a84c"/>
+<rect x="520" y="110" width="24" height="24" fill="#c9a84c"/>
+<rect x="544" y="110" width="24" height="24" fill="#c9a84c"/>
+<rect x="592" y="110" width="24" height="24" fill="#c9a84c"/>
+<rect x="616" y="110" width="24" height="24" fill="#c9a84c"/>
+<rect x="568" y="134" width="24" height="24" fill="#c9a84c"/>
+<rect x="568" y="158" width="24" height="24" fill="#c9a84c"/>
 <!-- piece -->
-<rect x="595" y="120" width="24" height="24" fill="#b8860b"/>
-<text class="lab" x="607" y="132">RT</text>
-<text class="note" x="610" y="207">unlimited orthogonals</text>
+<rect x="568" y="110" width="24" height="24" fill="#b8860b"/>
+<text style="font-family:Georgia,serif;font-size:9px;font-weight:bold;fill:#1a1209;text-anchor:middle;dominant-baseline:central" x="580" y="122">RT</text>
+
+<text class="note" x="580" y="198">unlimited orthogonals</text>
+<text class="note" x="580" y="210">blocked by any piece in path</text>
+<text class="note" x="580" y="222">covers both colors</text>
 
 
-<!-- ─── GAWJA ─── col 1, row 2 ─────────────────── -->
-<text class="lab" x="148" y="322">GAWJA</text>
-<text class="sub" x="148" y="335">Igto: GAWJA — Mawdige: THASTIN</text>
-<!-- 5x5 grid x=85 y=344 sq=24, up to 2 sq any dir, no jump, no cross ranks 4-5 -->
-<g>
-  <rect x="85"  y="344" width="24" height="24" fill="#4a2e10"/><rect x="109" y="344" width="24" height="24" fill="#6b4423"/>
-  <rect x="133" y="344" width="24" height="24" fill="#4a2e10"/><rect x="157" y="344" width="24" height="24" fill="#6b4423"/>
-  <rect x="181" y="344" width="24" height="24" fill="#4a2e10"/>
-  <rect x="85"  y="368" width="24" height="24" fill="#6b4423"/><rect x="109" y="368" width="24" height="24" fill="#4a2e10"/>
-  <rect x="133" y="368" width="24" height="24" fill="#6b4423"/><rect x="157" y="368" width="24" height="24" fill="#4a2e10"/>
-  <rect x="181" y="368" width="24" height="24" fill="#6b4423"/>
-  <rect x="85"  y="392" width="24" height="24" fill="#4a2e10"/><rect x="109" y="392" width="24" height="24" fill="#6b4423"/>
-  <rect x="133" y="392" width="24" height="24" fill="#4a2e10"/>
-  <rect x="157" y="392" width="24" height="24" fill="#6b4423"/><rect x="181" y="392" width="24" height="24" fill="#4a2e10"/>
-  <rect x="85"  y="416" width="24" height="24" fill="#6b4423"/><rect x="109" y="416" width="24" height="24" fill="#4a2e10"/>
-  <rect x="133" y="416" width="24" height="24" fill="#6b4423"/><rect x="157" y="416" width="24" height="24" fill="#4a2e10"/>
-  <rect x="181" y="416" width="24" height="24" fill="#6b4423"/>
-  <rect x="85"  y="440" width="24" height="24" fill="#4a2e10"/><rect x="109" y="440" width="24" height="24" fill="#6b4423"/>
-  <rect x="133" y="440" width="24" height="24" fill="#4a2e10"/><rect x="157" y="440" width="24" height="24" fill="#6b4423"/>
-  <rect x="181" y="440" width="24" height="24" fill="#4a2e10"/>
+<!-- ─── GAWJA ─── x=60, y=242 ─────────────────── -->
+<text class="tt"  x="180" y="244">GAWJA</text>
+<text class="sub" x="180" y="256">Igto: GAWJA · Mawdige: THASTIN</text>
+
+<g fill="#2e2010" stroke="#1a1209" stroke-width="1">
+  <rect x="60"  y="262" width="24" height="24"/>
+  <rect x="84"  y="262" width="24" height="24"/>
+  <rect x="108" y="262" width="24" height="24"/>
+  <rect x="132" y="262" width="24" height="24"/>
+  <rect x="156" y="262" width="24" height="24"/>
+  <rect x="60"  y="286" width="24" height="24"/>
+  <rect x="84"  y="286" width="24" height="24"/>
+  <rect x="108" y="286" width="24" height="24"/>
+  <rect x="132" y="286" width="24" height="24"/>
+  <rect x="156" y="286" width="24" height="24"/>
+  <rect x="60"  y="310" width="24" height="24"/>
+  <rect x="84"  y="310" width="24" height="24"/>
+  <rect x="108" y="310" width="24" height="24"/><!-- piece -->
+  <rect x="132" y="310" width="24" height="24"/>
+  <rect x="156" y="310" width="24" height="24"/>
+  <rect x="60"  y="334" width="24" height="24"/>
+  <rect x="84"  y="334" width="24" height="24"/>
+  <rect x="108" y="334" width="24" height="24"/>
+  <rect x="132" y="334" width="24" height="24"/>
+  <rect x="156" y="334" width="24" height="24"/>
+  <rect x="60"  y="358" width="24" height="24"/>
+  <rect x="84"  y="358" width="24" height="24"/>
+  <rect x="108" y="358" width="24" height="24"/>
+  <rect x="132" y="358" width="24" height="24"/>
+  <rect x="156" y="358" width="24" height="24"/>
 </g>
-<!-- all 24 reachable squares (everything except the 4 corners at distance sqrt(8)) -->
-<rect x="109" y="344" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="133" y="344" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="157" y="344" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="85"  y="368" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="109" y="368" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="133" y="368" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="157" y="368" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="181" y="368" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="85"  y="392" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="109" y="392" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="157" y="392" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="181" y="392" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="85"  y="416" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="109" y="416" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="133" y="416" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="157" y="416" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="181" y="416" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="109" y="440" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="133" y="440" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="157" y="440" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
+<!-- All squares within 2 steps (no jumping): every square except the 4 far corners -->
+<!-- Row 0: c1,c2,c3 reachable (c0,c4 are distance sqrt(8) diag - NOT reachable without jumping) -->
+<rect x="84"  y="262" width="24" height="24" fill="#c9a84c"/>
+<rect x="108" y="262" width="24" height="24" fill="#c9a84c"/>
+<rect x="132" y="262" width="24" height="24" fill="#c9a84c"/>
+<!-- Row 1: all 5 -->
+<rect x="60"  y="286" width="24" height="24" fill="#c9a84c"/>
+<rect x="84"  y="286" width="24" height="24" fill="#c9a84c"/>
+<rect x="108" y="286" width="24" height="24" fill="#c9a84c"/>
+<rect x="132" y="286" width="24" height="24" fill="#c9a84c"/>
+<rect x="156" y="286" width="24" height="24" fill="#c9a84c"/>
+<!-- Row 2: all except piece -->
+<rect x="60"  y="310" width="24" height="24" fill="#c9a84c"/>
+<rect x="84"  y="310" width="24" height="24" fill="#c9a84c"/>
+<rect x="132" y="310" width="24" height="24" fill="#c9a84c"/>
+<rect x="156" y="310" width="24" height="24" fill="#c9a84c"/>
+<!-- Row 3: all 5 -->
+<rect x="60"  y="334" width="24" height="24" fill="#c9a84c"/>
+<rect x="84"  y="334" width="24" height="24" fill="#c9a84c"/>
+<rect x="108" y="334" width="24" height="24" fill="#c9a84c"/>
+<rect x="132" y="334" width="24" height="24" fill="#c9a84c"/>
+<rect x="156" y="334" width="24" height="24" fill="#c9a84c"/>
+<!-- Row 4: c1,c2,c3 -->
+<rect x="84"  y="358" width="24" height="24" fill="#c9a84c"/>
+<rect x="108" y="358" width="24" height="24" fill="#c9a84c"/>
+<rect x="132" y="358" width="24" height="24" fill="#c9a84c"/>
 <!-- piece -->
-<rect x="133" y="392" width="24" height="24" fill="#b8860b"/>
-<text class="lab" x="145" y="404">GW</text>
-<text class="note" x="145" y="474">up to 2 sq any dir</text>
-<text class="note" x="145" y="484">cannot cross ranks 4–5</text>
+<rect x="108" y="310" width="24" height="24" fill="#b8860b"/>
+<text style="font-family:Georgia,serif;font-size:9px;font-weight:bold;fill:#1a1209;text-anchor:middle;dominant-baseline:central" x="120" y="322">GW</text>
+
+<text class="note" x="120" y="396">up to 2 squares any direction</text>
+<text class="note" x="120" y="408">cannot jump over pieces</text>
+<text class="note" x="120" y="420">cannot cross ranks 4–5 (ever)</text>
 
 
-<!-- ─── ASHUAW ─── col 2, row 2 ─────────────────── -->
-<text class="lab" x="378" y="322">ASHUAW</text>
-<text class="sub" x="378" y="335">both sides</text>
-<!-- 5x5 grid x=315 y=344 sq=24, knight L-shapes -->
-<g>
-  <rect x="315" y="344" width="24" height="24" fill="#4a2e10"/><rect x="339" y="344" width="24" height="24" fill="#6b4423"/>
-  <rect x="363" y="344" width="24" height="24" fill="#4a2e10"/><rect x="387" y="344" width="24" height="24" fill="#6b4423"/>
-  <rect x="411" y="344" width="24" height="24" fill="#4a2e10"/>
-  <rect x="315" y="368" width="24" height="24" fill="#6b4423"/><rect x="339" y="368" width="24" height="24" fill="#4a2e10"/>
-  <rect x="363" y="368" width="24" height="24" fill="#6b4423"/><rect x="387" y="368" width="24" height="24" fill="#4a2e10"/>
-  <rect x="411" y="368" width="24" height="24" fill="#6b4423"/>
-  <rect x="315" y="392" width="24" height="24" fill="#4a2e10"/><rect x="339" y="392" width="24" height="24" fill="#6b4423"/>
-  <rect x="363" y="392" width="24" height="24" fill="#4a2e10"/>
-  <rect x="387" y="392" width="24" height="24" fill="#6b4423"/><rect x="411" y="392" width="24" height="24" fill="#4a2e10"/>
-  <rect x="315" y="416" width="24" height="24" fill="#6b4423"/><rect x="339" y="416" width="24" height="24" fill="#4a2e10"/>
-  <rect x="363" y="416" width="24" height="24" fill="#6b4423"/><rect x="387" y="416" width="24" height="24" fill="#4a2e10"/>
-  <rect x="411" y="416" width="24" height="24" fill="#6b4423"/>
-  <rect x="315" y="440" width="24" height="24" fill="#4a2e10"/><rect x="339" y="440" width="24" height="24" fill="#6b4423"/>
-  <rect x="363" y="440" width="24" height="24" fill="#4a2e10"/><rect x="387" y="440" width="24" height="24" fill="#6b4423"/>
-  <rect x="411" y="440" width="24" height="24" fill="#4a2e10"/>
+<!-- ─── ASHUAW ─── x=290, y=242 ─────────────────── -->
+<text class="tt"  x="410" y="244">ASHUAW</text>
+<text class="sub" x="410" y="256">both sides</text>
+
+<g fill="#2e2010" stroke="#1a1209" stroke-width="1">
+  <rect x="290" y="262" width="24" height="24"/>
+  <rect x="314" y="262" width="24" height="24"/>
+  <rect x="338" y="262" width="24" height="24"/>
+  <rect x="362" y="262" width="24" height="24"/>
+  <rect x="386" y="262" width="24" height="24"/>
+  <rect x="290" y="286" width="24" height="24"/>
+  <rect x="314" y="286" width="24" height="24"/>
+  <rect x="338" y="286" width="24" height="24"/>
+  <rect x="362" y="286" width="24" height="24"/>
+  <rect x="386" y="286" width="24" height="24"/>
+  <rect x="290" y="310" width="24" height="24"/>
+  <rect x="314" y="310" width="24" height="24"/>
+  <rect x="338" y="310" width="24" height="24"/><!-- piece -->
+  <rect x="362" y="310" width="24" height="24"/>
+  <rect x="386" y="310" width="24" height="24"/>
+  <rect x="290" y="334" width="24" height="24"/>
+  <rect x="314" y="334" width="24" height="24"/>
+  <rect x="338" y="334" width="24" height="24"/>
+  <rect x="362" y="334" width="24" height="24"/>
+  <rect x="386" y="334" width="24" height="24"/>
+  <rect x="290" y="358" width="24" height="24"/>
+  <rect x="314" y="358" width="24" height="24"/>
+  <rect x="338" y="358" width="24" height="24"/>
+  <rect x="362" y="358" width="24" height="24"/>
+  <rect x="386" y="358" width="24" height="24"/>
 </g>
-<!-- 8 knight squares from center c2r2=(363,392): -->
-<!-- (+2,+1)=411,368  (+2,-1)=411,416  (-2,+1)=315,368  (-2,-1)=315,416 -->
-<!-- (+1,+2)=387,344  (+1,-2)=387,440  (-1,+2)=339,344  (-1,-2)=339,440 -->
-<rect x="411" y="368" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="411" y="416" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="315" y="368" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="315" y="416" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="387" y="344" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="387" y="440" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="339" y="344" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
-<rect x="339" y="440" width="24" height="24" fill="#c9a84c" opacity="0.7"/>
+<!-- 8 L-shape squares from center (338,310): -->
+<!-- (+2sq right, +1sq up) = 386,286   (+2r,+1d) = 386,334 -->
+<!-- (+2sq left, +1sq up) = 290,286    (+2l,+1d) = 290,334 -->
+<!-- (+1r,+2up) = 362,262              (+1r,+2d) = 362,358 -->
+<!-- (+1l,+2up) = 314,262              (+1l,+2d) = 314,358 -->
+<rect x="386" y="286" width="24" height="24" fill="#c9a84c"/>
+<rect x="386" y="334" width="24" height="24" fill="#c9a84c"/>
+<rect x="290" y="286" width="24" height="24" fill="#c9a84c"/>
+<rect x="290" y="334" width="24" height="24" fill="#c9a84c"/>
+<rect x="362" y="262" width="24" height="24" fill="#c9a84c"/>
+<rect x="362" y="358" width="24" height="24" fill="#c9a84c"/>
+<rect x="314" y="262" width="24" height="24" fill="#c9a84c"/>
+<rect x="314" y="358" width="24" height="24" fill="#c9a84c"/>
 <!-- piece -->
-<rect x="363" y="392" width="24" height="24" fill="#b8860b"/>
-<text class="lab" x="375" y="404">AS</text>
-<text class="note" x="378" y="474">L-shape jump, can leap pieces</text>
-<text class="note" x="378" y="484">ignores terrain</text>
+<rect x="338" y="310" width="24" height="24" fill="#b8860b"/>
+<text style="font-family:Georgia,serif;font-size:9px;font-weight:bold;fill:#1a1209;text-anchor:middle;dominant-baseline:central" x="350" y="322">AS</text>
+
+<text class="note" x="350" y="396">L-shape jump: 2 squares + 1 perpendicular</text>
+<text class="note" x="350" y="408">can leap over any piece in path</text>
+<text class="note" x="350" y="420">ignores the mountain zone entirely</text>
 
 
-<!-- ─── TISHLE ─── col 3, row 2 ─────────────────── -->
-<text class="lab" x="610" y="322">TISHLE</text>
-<text class="sub" x="610" y="335">Igto: STENICA — Mawdige: NPAWTI</text>
-<!-- 5x5 grid x=547 y=344 sq=24 -->
-<!-- Igto TISHLE (fwd=up): moves to r1c1,r1c2,r1c3 (sidestep fwd), captures r1c2 straight -->
-<!-- Show capture vs move distinction -->
-<g>
-  <rect x="547" y="344" width="24" height="24" fill="#4a2e10"/><rect x="571" y="344" width="24" height="24" fill="#6b4423"/>
-  <rect x="595" y="344" width="24" height="24" fill="#4a2e10"/><rect x="619" y="344" width="24" height="24" fill="#6b4423"/>
-  <rect x="643" y="344" width="24" height="24" fill="#4a2e10"/>
-  <rect x="547" y="368" width="24" height="24" fill="#6b4423"/><rect x="571" y="368" width="24" height="24" fill="#4a2e10"/>
-  <rect x="595" y="368" width="24" height="24" fill="#6b4423"/><rect x="619" y="368" width="24" height="24" fill="#4a2e10"/>
-  <rect x="643" y="368" width="24" height="24" fill="#6b4423"/>
-  <rect x="547" y="392" width="24" height="24" fill="#4a2e10"/><rect x="571" y="392" width="24" height="24" fill="#6b4423"/>
-  <rect x="595" y="392" width="24" height="24" fill="#4a2e10"/>
-  <rect x="619" y="392" width="24" height="24" fill="#6b4423"/><rect x="643" y="392" width="24" height="24" fill="#4a2e10"/>
-  <rect x="547" y="416" width="24" height="24" fill="#6b4423"/><rect x="571" y="416" width="24" height="24" fill="#4a2e10"/>
-  <rect x="595" y="416" width="24" height="24" fill="#6b4423"/><rect x="619" y="416" width="24" height="24" fill="#4a2e10"/>
-  <rect x="643" y="416" width="24" height="24" fill="#6b4423"/>
-  <rect x="547" y="440" width="24" height="24" fill="#4a2e10"/><rect x="571" y="440" width="24" height="24" fill="#6b4423"/>
-  <rect x="595" y="440" width="24" height="24" fill="#4a2e10"/><rect x="619" y="440" width="24" height="24" fill="#6b4423"/>
-  <rect x="643" y="440" width="24" height="24" fill="#4a2e10"/>
+<!-- ─── TISHLE ─── x=520, y=242 ─────────────────── -->
+<text class="tt"  x="640" y="244">TISHLE</text>
+<text class="sub" x="640" y="256">Igto: STENICA · Mawdige: NPAWTI</text>
+
+<g fill="#2e2010" stroke="#1a1209" stroke-width="1">
+  <rect x="520" y="262" width="24" height="24"/>
+  <rect x="544" y="262" width="24" height="24"/>
+  <rect x="568" y="262" width="24" height="24"/>
+  <rect x="592" y="262" width="24" height="24"/>
+  <rect x="616" y="262" width="24" height="24"/>
+  <rect x="520" y="286" width="24" height="24"/>
+  <rect x="544" y="286" width="24" height="24"/>
+  <rect x="568" y="286" width="24" height="24"/>
+  <rect x="592" y="286" width="24" height="24"/>
+  <rect x="616" y="286" width="24" height="24"/>
+  <rect x="520" y="310" width="24" height="24"/>
+  <rect x="544" y="310" width="24" height="24"/>
+  <rect x="568" y="310" width="24" height="24"/><!-- piece -->
+  <rect x="592" y="310" width="24" height="24"/>
+  <rect x="616" y="310" width="24" height="24"/>
+  <rect x="520" y="334" width="24" height="24"/>
+  <rect x="544" y="334" width="24" height="24"/>
+  <rect x="568" y="334" width="24" height="24"/>
+  <rect x="592" y="334" width="24" height="24"/>
+  <rect x="616" y="334" width="24" height="24"/>
+  <rect x="520" y="358" width="24" height="24"/>
+  <rect x="544" y="358" width="24" height="24"/>
+  <rect x="568" y="358" width="24" height="24"/>
+  <rect x="592" y="358" width="24" height="24"/>
+  <rect x="616" y="358" width="24" height="24"/>
 </g>
-<!-- move: fwd c2r1=595,368, sidestep c1r1=571,368 and c3r1=619,368 -->
-<rect x="571" y="368" width="24" height="24" fill="#c9a84c" opacity="0.6"/>
-<rect x="619" y="368" width="24" height="24" fill="#c9a84c" opacity="0.6"/>
-<!-- capture: fwd only c2r1 -->
-<rect x="595" y="368" width="24" height="24" fill="#e05050" opacity="0.7"/>
+<!-- move: forward (up for Igto) = 568,286. sidestep diagonals = 544,286 and 592,286 -->
+<rect x="544" y="286" width="24" height="24" fill="#c9a84c"/><!-- sidestep L -->
+<rect x="592" y="286" width="24" height="24" fill="#c9a84c"/><!-- sidestep R -->
+<!-- capture only: straight forward -->
+<rect x="568" y="286" width="24" height="24" fill="#c44a4a"/>
 <!-- piece -->
-<rect x="595" y="392" width="24" height="24" fill="#b8860b"/>
-<text class="lab" x="607" y="404">TI</text>
-<text class="note" x="610" y="474">tan=move  red=capture only</text>
-<text class="note" x="610" y="484">captures straight ahead</text>
+<rect x="568" y="310" width="24" height="24" fill="#b8860b"/>
+<text style="font-family:Georgia,serif;font-size:9px;font-weight:bold;fill:#1a1209;text-anchor:middle;dominant-baseline:central" x="580" y="322">TI</text>
 
-<!-- ═══ Legend bar ═══ -->
-<rect x="28" y="538" width="16" height="12" rx="2" fill="#b8860b"/>
-<text class="lsm" x="52" y="544" text-anchor="start" dominant-baseline="central">Piece</text>
-<rect x="100" y="538" width="16" height="12" rx="2" fill="#c9a84c" opacity="0.75"/>
-<text class="lsm" x="124" y="544" text-anchor="start" dominant-baseline="central">Can move/capture</text>
-<rect x="258" y="538" width="16" height="12" rx="2" fill="#e05050" opacity="0.7"/>
-<text class="lsm" x="282" y="544" text-anchor="start" dominant-baseline="central">Capture only</text>
-<rect x="390" y="538" width="16" height="12" rx="2" fill="#8b6914" opacity="0.8"/>
-<text class="lsm" x="414" y="544" text-anchor="start" dominant-baseline="central">RAWDAW only (back-diag)</text>
+<text class="note" x="580" y="396">gold = move only (empty squares)</text>
+<text class="note" x="580" y="408">red = capture only (straight ahead)</text>
+<text class="note" x="580" y="420">promotes on opponent's back 2 ranks</text>
+
+
+<!-- ═══ DIVIDER ═══ -->
+<line x1="40" y1="438" x2="640" y2="438" stroke="#4a2e10" stroke-width="0.8"/>
+
+<!-- ═══ LEGEND ═══ -->
+<text style="font-family:Georgia,serif;font-size:10px;font-weight:bold;fill:#c9a84c;text-anchor:middle" x="340" y="458">Legend</text>
+
+<rect x="60"  y="470" width="18" height="18" rx="2" fill="#b8860b"/>
+<text class="leg" x="84" y="479">Piece</text>
+
+<rect x="150" y="470" width="18" height="18" rx="2" fill="#c9a84c"/>
+<text class="leg" x="174" y="479">Move or capture</text>
+
+<rect x="310" y="470" width="18" height="18" rx="2" fill="#c44a4a"/>
+<text class="leg" x="334" y="479">Capture only</text>
+
+<rect x="460" y="470" width="18" height="18" rx="2" fill="#8b6914"/>
+<text class="leg" x="484" y="479">RAWDAW only (back-diagonal)</text>
+
+<!-- ═══ PROMOTION NOTE ═══ -->
+<line x1="40" y1="502" x2="640" y2="502" stroke="#4a2e10" stroke-width="0.5"/>
+<text style="font-family:Georgia,serif;font-size:9px;fill:#7a6030;text-anchor:middle;font-style:italic" x="340" y="518">Promoted TISHLE (★): all moves and captures apply in both forward and backward directions.</text>
+<text style="font-family:Georgia,serif;font-size:9px;fill:#7a6030;text-anchor:middle;font-style:italic" x="340" y="532">GAWJA restriction is absolute — it cannot enter or cross ranks 4–5 under any circumstances.</text>
+<text style="font-family:Georgia,serif;font-size:9px;fill:#7a6030;text-anchor:middle;font-style:italic" x="340" y="546">All sliding pieces (POR, RATHAW) are blocked by the first piece in their path.</text>
+<text style="font-family:Georgia,serif;font-size:9px;fill:#7a6030;text-anchor:middle;font-style:italic" x="340" y="560">Movement diagrams show Igto perspective (↑ = toward Mawdige). Mawdige moves in reverse.</text>
+
+<!-- Outer border -->
+<rect x="20" y="8" width="640" height="578" fill="none" stroke="#4a2e10" stroke-width="1" rx="4"/>
 
 </svg>
