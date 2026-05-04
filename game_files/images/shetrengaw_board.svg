@@ -1,0 +1,251 @@
+<svg width="100%" viewBox="0 0 680 580" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>SHETRENGAW board — starting position</title>
+<desc>8x8 game board with files D through G and ranks 1 through 8, showing starting piece positions for Igto (blue, ranks 1-2) and Mawdige (red, ranks 7-8), mountain safe spaces on ranks 4-5, and the mountain zone.</desc>
+<defs>
+  <style>
+    .fl { font-family: Georgia, serif; font-size: 11px; fill: #7a6030; text-anchor: middle; dominant-baseline: central; }
+    .pc { font-family: Georgia, serif; font-size: 8px; font-weight: bold; text-anchor: middle; dominant-baseline: central; }
+    .pn { font-family: Georgia, serif; font-size: 6px; font-style: italic; text-anchor: middle; dominant-baseline: central; }
+    .ig { fill: #4a8fc4; }
+    .mw { fill: #c44a4a; }
+    .tt { font-family: Georgia, serif; font-size: 14px; font-weight: bold; fill: #2C1A08; text-anchor: middle; }
+    .leg { font-family: Georgia, serif; font-size: 10px; fill: #4a3020; }
+  </style>
+</defs>
+
+<!-- Background -->
+<rect width="680" height="580" fill="#1a1209"/>
+
+<!-- Title -->
+<text class="tt" x="340" y="32">SHETRENGAW — Starting Position</text>
+
+<!-- Board squares: files D T C B N S M G = cols 0-7, ranks 8..1 = rows 0-7 -->
+<!-- origin: x=60, y=48, sq=68 -->
+
+<!-- Helper: ranks display top=8 down to bottom=1 -->
+<!-- Row 0 = rank 8 (Maw back), Row 7 = rank 1 (Igto back) -->
+
+<!-- Squares -->
+<g id="squares">
+  <!-- Row 0: rank 8 -->
+  <rect x="60"  y="48"  width="68" height="68" fill="#c4a870"/><!-- D8 light -->
+  <rect x="128" y="48"  width="68" height="68" fill="#8b6535"/><!-- T8 dark -->
+  <rect x="196" y="48"  width="68" height="68" fill="#c4a870"/><!-- C8 light -->
+  <rect x="264" y="48"  width="68" height="68" fill="#8b6535"/><!-- B8 dark -->
+  <rect x="332" y="48"  width="68" height="68" fill="#c4a870"/><!-- N8 light -->
+  <rect x="400" y="48"  width="68" height="68" fill="#8b6535"/><!-- S8 dark -->
+  <rect x="468" y="48"  width="68" height="68" fill="#c4a870"/><!-- M8 light -->
+  <rect x="536" y="48"  width="68" height="68" fill="#8b6535"/><!-- G8 dark -->
+  <!-- Row 1: rank 7 -->
+  <rect x="60"  y="116" width="68" height="68" fill="#8b6535"/>
+  <rect x="128" y="116" width="68" height="68" fill="#c4a870"/>
+  <rect x="196" y="116" width="68" height="68" fill="#8b6535"/>
+  <rect x="264" y="116" width="68" height="68" fill="#c4a870"/>
+  <rect x="332" y="116" width="68" height="68" fill="#8b6535"/>
+  <rect x="400" y="116" width="68" height="68" fill="#c4a870"/>
+  <rect x="468" y="116" width="68" height="68" fill="#8b6535"/>
+  <rect x="536" y="116" width="68" height="68" fill="#c4a870"/>
+  <!-- Row 2: rank 6 -->
+  <rect x="60"  y="184" width="68" height="68" fill="#c4a870"/>
+  <rect x="128" y="184" width="68" height="68" fill="#8b6535"/>
+  <rect x="196" y="184" width="68" height="68" fill="#c4a870"/>
+  <rect x="264" y="184" width="68" height="68" fill="#8b6535"/>
+  <rect x="332" y="184" width="68" height="68" fill="#c4a870"/>
+  <rect x="400" y="184" width="68" height="68" fill="#8b6535"/>
+  <rect x="468" y="184" width="68" height="68" fill="#c4a870"/>
+  <rect x="536" y="184" width="68" height="68" fill="#8b6535"/>
+  <!-- Row 3: rank 5 (mountain, with safe spaces at D5 B5 N5 G5) -->
+  <rect x="60"  y="252" width="68" height="68" fill="#5a7a45"/><!-- D5 safe -->
+  <rect x="128" y="252" width="68" height="68" fill="#7a8060"/><!-- T5 mtn -->
+  <rect x="196" y="252" width="68" height="68" fill="#7a8060"/><!-- C5 mtn -->
+  <rect x="264" y="252" width="68" height="68" fill="#5a7a45"/><!-- B5 safe -->
+  <rect x="332" y="252" width="68" height="68" fill="#5a7a45"/><!-- N5 safe -->
+  <rect x="400" y="252" width="68" height="68" fill="#7a8060"/><!-- S5 mtn -->
+  <rect x="468" y="252" width="68" height="68" fill="#7a8060"/><!-- M5 mtn -->
+  <rect x="536" y="252" width="68" height="68" fill="#5a7a45"/><!-- G5 safe -->
+  <!-- Row 4: rank 4 (mountain, with safe spaces at D4 B4 N4 G4) -->
+  <rect x="60"  y="320" width="68" height="68" fill="#8aaa70"/><!-- D4 safe light -->
+  <rect x="128" y="320" width="68" height="68" fill="#7a8060"/><!-- T4 mtn -->
+  <rect x="196" y="320" width="68" height="68" fill="#7a8060"/><!-- C4 mtn -->
+  <rect x="264" y="320" width="68" height="68" fill="#8aaa70"/><!-- B4 safe -->
+  <rect x="332" y="320" width="68" height="68" fill="#8aaa70"/><!-- N4 safe -->
+  <rect x="400" y="320" width="68" height="68" fill="#7a8060"/><!-- S4 mtn -->
+  <rect x="468" y="320" width="68" height="68" fill="#7a8060"/><!-- M4 mtn -->
+  <rect x="536" y="320" width="68" height="68" fill="#8aaa70"/><!-- G4 safe -->
+  <!-- Row 5: rank 3 -->
+  <rect x="60"  y="388" width="68" height="68" fill="#c4a870"/>
+  <rect x="128" y="388" width="68" height="68" fill="#8b6535"/>
+  <rect x="196" y="388" width="68" height="68" fill="#c4a870"/>
+  <rect x="264" y="388" width="68" height="68" fill="#8b6535"/>
+  <rect x="332" y="388" width="68" height="68" fill="#c4a870"/>
+  <rect x="400" y="388" width="68" height="68" fill="#8b6535"/>
+  <rect x="468" y="388" width="68" height="68" fill="#c4a870"/>
+  <rect x="536" y="388" width="68" height="68" fill="#8b6535"/>
+  <!-- Row 6: rank 2 -->
+  <rect x="60"  y="456" width="68" height="68" fill="#8b6535"/>
+  <rect x="128" y="456" width="68" height="68" fill="#c4a870"/>
+  <rect x="196" y="456" width="68" height="68" fill="#8b6535"/>
+  <rect x="264" y="456" width="68" height="68" fill="#c4a870"/>
+  <rect x="332" y="456" width="68" height="68" fill="#8b6535"/>
+  <rect x="400" y="456" width="68" height="68" fill="#c4a870"/>
+  <rect x="468" y="456" width="68" height="68" fill="#8b6535"/>
+  <rect x="536" y="456" width="68" height="68" fill="#c4a870"/>
+  <!-- Row 7: rank 1 -->
+  <rect x="60"  y="524" width="68" height="68" fill="#c4a870"/>
+  <rect x="128" y="524" width="68" height="68" fill="#8b6535"/>
+  <rect x="196" y="524" width="68" height="68" fill="#c4a870"/>
+  <rect x="264" y="524" width="68" height="68" fill="#8b6535"/>
+  <rect x="332" y="524" width="68" height="68" fill="#c4a870"/>
+  <rect x="400" y="524" width="68" height="68" fill="#8b6535"/>
+  <rect x="468" y="524" width="68" height="68" fill="#c4a870"/>
+  <rect x="536" y="524" width="68" height="68" fill="#8b6535"/>
+</g>
+
+<!-- Grid border -->
+<rect x="60" y="48" width="544" height="544" fill="none" stroke="#4a2e10" stroke-width="2"/>
+<!-- Internal grid lines -->
+<g stroke="#4a2e10" stroke-width="0.5" opacity="0.5">
+  <line x1="128" y1="48" x2="128" y2="592"/>
+  <line x1="196" y1="48" x2="196" y2="592"/>
+  <line x1="264" y1="48" x2="264" y2="592"/>
+  <line x1="332" y1="48" x2="332" y2="592"/>
+  <line x1="400" y1="48" x2="400" y2="592"/>
+  <line x1="468" y1="48" x2="468" y2="592"/>
+  <line x1="536" y1="48" x2="536" y2="592"/>
+  <line x1="60" y1="116" x2="604" y2="116"/>
+  <line x1="60" y1="184" x2="604" y2="184"/>
+  <line x1="60" y1="252" x2="604" y2="252"/>
+  <line x1="60" y1="320" x2="604" y2="320"/>
+  <line x1="60" y1="388" x2="604" y2="388"/>
+  <line x1="60" y1="456" x2="604" y2="456"/>
+  <line x1="60" y1="524" x2="604" y2="524"/>
+</g>
+
+<!-- File labels top -->
+<text class="fl" x="94"  y="36">D</text>
+<text class="fl" x="162" y="36">T</text>
+<text class="fl" x="230" y="36">C</text>
+<text class="fl" x="298" y="36">B</text>
+<text class="fl" x="366" y="36">N</text>
+<text class="fl" x="434" y="36">S</text>
+<text class="fl" x="502" y="36">M</text>
+<text class="fl" x="570" y="36">G</text>
+
+<!-- Rank labels left -->
+<text class="fl" x="44" y="82">8</text>
+<text class="fl" x="44" y="150">7</text>
+<text class="fl" x="44" y="218">6</text>
+<text class="fl" x="44" y="286">5</text>
+<text class="fl" x="44" y="354">4</text>
+<text class="fl" x="44" y="422">3</text>
+<text class="fl" x="44" y="490">2</text>
+<text class="fl" x="44" y="558">1</text>
+
+<!-- ═══ PIECES ═══ -->
+<!-- Mawdige rank 8: GAWJA RATHAW POR ASHUAW RAWD ASHUAW RATHAW GAWJA -->
+<g fill="#300e0e" stroke="#c44a4a" stroke-width="1.5">
+  <rect x="67"  y="55"  width="54" height="54" rx="3"/>
+  <rect x="135" y="55"  width="54" height="54" rx="3"/>
+  <rect x="203" y="55"  width="54" height="54" rx="3"/>
+  <rect x="271" y="55"  width="54" height="54" rx="3"/>
+  <rect x="339" y="55"  width="54" height="54" rx="3"/>
+  <rect x="407" y="55"  width="54" height="54" rx="3"/>
+  <rect x="475" y="55"  width="54" height="54" rx="3"/>
+  <rect x="543" y="55"  width="54" height="54" rx="3"/>
+</g>
+<text class="pc mw" x="94"  y="76">GW</text><text class="pn mw" x="94"  y="87">THASTIN</text>
+<text class="pc mw" x="162" y="76">RT</text><text class="pn mw" x="162" y="87">RATHAW</text>
+<text class="pc mw" x="230" y="76">PO</text><text class="pn mw" x="230" y="87">STENAPTI</text>
+<text class="pc mw" x="298" y="76">AS</text><text class="pn mw" x="298" y="87">ASHUAW</text>
+<text class="pc mw" x="366" y="76">RD</text><text class="pn mw" x="366" y="87">RAJA</text>
+<text class="pc mw" x="434" y="76">AS</text><text class="pn mw" x="434" y="87">ASHUAW</text>
+<text class="pc mw" x="502" y="76">RT</text><text class="pn mw" x="502" y="87">RATHAW</text>
+<text class="pc mw" x="570" y="76">GW</text><text class="pn mw" x="570" y="87">THASTIN</text>
+
+<!-- Mawdige rank 7: 8x NPAWTI -->
+<g fill="#300e0e" stroke="#c44a4a" stroke-width="1.5">
+  <rect x="67"  y="123" width="54" height="54" rx="3"/>
+  <rect x="135" y="123" width="54" height="54" rx="3"/>
+  <rect x="203" y="123" width="54" height="54" rx="3"/>
+  <rect x="271" y="123" width="54" height="54" rx="3"/>
+  <rect x="339" y="123" width="54" height="54" rx="3"/>
+  <rect x="407" y="123" width="54" height="54" rx="3"/>
+  <rect x="475" y="123" width="54" height="54" rx="3"/>
+  <rect x="543" y="123" width="54" height="54" rx="3"/>
+</g>
+<text class="pc mw" x="94"  y="144">TI</text><text class="pn mw" x="94"  y="155">NPAWTI</text>
+<text class="pc mw" x="162" y="144">TI</text><text class="pn mw" x="162" y="155">NPAWTI</text>
+<text class="pc mw" x="230" y="144">TI</text><text class="pn mw" x="230" y="155">NPAWTI</text>
+<text class="pc mw" x="298" y="144">TI</text><text class="pn mw" x="298" y="155">NPAWTI</text>
+<text class="pc mw" x="366" y="144">TI</text><text class="pn mw" x="366" y="155">NPAWTI</text>
+<text class="pc mw" x="434" y="144">TI</text><text class="pn mw" x="434" y="155">NPAWTI</text>
+<text class="pc mw" x="502" y="144">TI</text><text class="pn mw" x="502" y="155">NPAWTI</text>
+<text class="pc mw" x="570" y="144">TI</text><text class="pn mw" x="570" y="155">NPAWTI</text>
+
+<!-- Igto rank 2: 8x STENICA -->
+<g fill="#0e2030" stroke="#4a8fc4" stroke-width="1.5">
+  <rect x="67"  y="463" width="54" height="54" rx="3"/>
+  <rect x="135" y="463" width="54" height="54" rx="3"/>
+  <rect x="203" y="463" width="54" height="54" rx="3"/>
+  <rect x="271" y="463" width="54" height="54" rx="3"/>
+  <rect x="339" y="463" width="54" height="54" rx="3"/>
+  <rect x="407" y="463" width="54" height="54" rx="3"/>
+  <rect x="475" y="463" width="54" height="54" rx="3"/>
+  <rect x="543" y="463" width="54" height="54" rx="3"/>
+</g>
+<text class="pc ig" x="94"  y="484">TI</text><text class="pn ig" x="94"  y="495">STENICA</text>
+<text class="pc ig" x="162" y="484">TI</text><text class="pn ig" x="162" y="495">STENICA</text>
+<text class="pc ig" x="230" y="484">TI</text><text class="pn ig" x="230" y="495">STENICA</text>
+<text class="pc ig" x="298" y="484">TI</text><text class="pn ig" x="298" y="495">STENICA</text>
+<text class="pc ig" x="366" y="484">TI</text><text class="pn ig" x="366" y="495">STENICA</text>
+<text class="pc ig" x="434" y="484">TI</text><text class="pn ig" x="434" y="495">STENICA</text>
+<text class="pc ig" x="502" y="484">TI</text><text class="pn ig" x="502" y="495">STENICA</text>
+<text class="pc ig" x="570" y="484">TI</text><text class="pn ig" x="570" y="495">STENICA</text>
+
+<!-- Igto rank 1: GAWJA RATHAW ASHUAW RAWD POR ASHUAW RATHAW GAWJA -->
+<g fill="#0e2030" stroke="#4a8fc4" stroke-width="1.5">
+  <rect x="67"  y="531" width="54" height="54" rx="3"/>
+  <rect x="135" y="531" width="54" height="54" rx="3"/>
+  <rect x="203" y="531" width="54" height="54" rx="3"/>
+  <rect x="271" y="531" width="54" height="54" rx="3"/>
+  <rect x="339" y="531" width="54" height="54" rx="3"/>
+  <rect x="407" y="531" width="54" height="54" rx="3"/>
+  <rect x="475" y="531" width="54" height="54" rx="3"/>
+  <rect x="543" y="531" width="54" height="54" rx="3"/>
+</g>
+<text class="pc ig" x="94"  y="552">GW</text><text class="pn ig" x="94"  y="563">GAWJA</text>
+<text class="pc ig" x="162" y="552">RT</text><text class="pn ig" x="162" y="563">RATHAW</text>
+<text class="pc ig" x="230" y="552">AS</text><text class="pn ig" x="230" y="563">ASHUAW</text>
+<text class="pc ig" x="298" y="552">RD</text><text class="pn ig" x="298" y="563">RAWDAW</text>
+<text class="pc ig" x="366" y="552">PO</text><text class="pn ig" x="366" y="563">PORLE</text>
+<text class="pc ig" x="434" y="552">AS</text><text class="pn ig" x="434" y="563">ASHUAW</text>
+<text class="pc ig" x="502" y="552">RT</text><text class="pn ig" x="502" y="563">RATHAW</text>
+<text class="pc ig" x="570" y="552">GW</text><text class="pn ig" x="570" y="563">GAWJA</text>
+
+<!-- Safe space markers (small diamond) -->
+<g fill="#e8c870" opacity="0.6">
+  <polygon points="94,316 100,322 94,328 88,322" />
+  <polygon points="298,316 304,322 298,328 292,322" />
+  <polygon points="366,316 372,322 366,328 360,322" />
+  <polygon points="570,316 576,322 570,328 564,322" />
+  <polygon points="94,248 100,254 94,260 88,254" />
+  <polygon points="298,248 304,254 298,260 292,254" />
+  <polygon points="366,248 372,254 366,260 360,254" />
+  <polygon points="570,248 576,254 570,260 564,254" />
+</g>
+
+<!-- Zone labels on right margin -->
+<text style="font-family:Georgia,serif;font-size:9px;fill:#c44a4a;font-weight:bold" x="608" y="82" dominant-baseline="central">Mawdige</text>
+<text style="font-family:Georgia,serif;font-size:9px;fill:#c44a4a;" x="608" y="94" dominant-baseline="central">back ranks</text>
+<text style="font-family:Georgia,serif;font-size:9px;fill:#7a8060;" x="608" y="286" dominant-baseline="central">Mountain</text>
+<text style="font-family:Georgia,serif;font-size:9px;fill:#7a8060;" x="608" y="298" dominant-baseline="central">range</text>
+<text style="font-family:Georgia,serif;font-size:9px;fill:#4a8fc4;font-weight:bold" x="608" y="490" dominant-baseline="central">Igto</text>
+<text style="font-family:Georgia,serif;font-size:9px;fill:#4a8fc4;" x="608" y="502" dominant-baseline="central">back ranks</text>
+
+<!-- Legend at top right -->
+<rect x="622" y="48" width="52" height="12" rx="2" fill="#5a7a45" opacity="0.8"/>
+<text class="leg" x="628" y="58">Safe space</text>
+<rect x="622" y="64" width="52" height="12" rx="2" fill="#7a8060" opacity="0.8"/>
+<text class="leg" x="628" y="74">Mountain</text>
+
+</svg>
