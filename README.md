@@ -124,20 +124,20 @@ If you play a memorable game, feel free to share your `.stg` file in
 
 ## Repository Structure
 
-shetrengaw/
-├── README.md
-├── game_files/
-│   ├── 3d_files/
-│   ├── images/
-│   │   ├── shetrengaw_header.svg
-│   │   ├── shetrengaw_board.svg
-│   │   ├── shetrengaw_pieces.svg
-│   │   └── (piece images)
-│   └── shetrengaw_html/
-│       └── shetrengaw_v7_stg.html
-├── lore/
-└── rules/
-└── Shetrengaw_Rulebook_v7.docx
+    shetrengaw/
+    ├── README.md
+    ├── game_files/
+    │   ├── 3d_files/
+    │   ├── images/
+    │   │   ├── shetrengaw_header.svg
+    │   │   ├── shetrengaw_board.svg
+    │   │   ├── shetrengaw_pieces.svg
+    │   │   └── (piece images)
+    │   └── shetrengaw_html/
+    │       └── shetrengaw_v7_stg.html
+    ├── lore/
+    └── rules/
+        └── Shetrengaw_Rulebook_v7.docx
 
 ---
 
