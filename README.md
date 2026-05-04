@@ -112,7 +112,7 @@ and the elephant's trunk.
 
 | Igto | Piece | Mawdige |
 |:----:|:-----:|:-------:|
-| <img src="game_files/images/igto_tishle.png" width="120" alt="STENICA"/> | **TISHLE** | <img src="game_files/images/mawdige_tishle.png" width="120" alt="NPAWTI"/> |
+| <img src="game_files/images/Igto_TISHLE.png" width="120" alt="STENICA"/> | **TISHLE** | <img src="game_files/images/mawdige_tishle.png" width="120" alt="NPAWTI"/> |
 | <img src="game_files/images/igto_ashuaw.png" width="120" alt="ASHUAW"/> | **ASHUAW** | <img src="game_files/images/mawdige_ashuaw.png" width="120" alt="ASHUAW"/> |
 | <img src="game_files/images/igto_gawja.png" width="120" alt="GAWJA"/> | **GAWJA / THASTIN** | <img src="game_files/images/mawdige_thastin.png" width="120" alt="THASTIN"/> |
 | <img src="game_files/images/igto_por.png" width="120" alt="PORLE"/> | **POR** | <img src="game_files/images/mawdige_por.png" width="120" alt="STENAPTI"/> |
