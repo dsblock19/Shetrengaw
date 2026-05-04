@@ -108,6 +108,17 @@ and the elephant's trunk.
 | RAJA | King | Forward, diagonal, sideways only — no back-diagonal |
 | RATHAW | Chariot | Same as Igto RATHAW |
 
+### Court Set
+
+| Igto | Piece | Mawdige |
+|:----:|:-----:|:-------:|
+| <img src="game_files/images/igto_tishle.png" width="120" alt="STENICA"/> | **TISHLE** | <img src="game_files/images/mawdige_tishle.png" width="120" alt="NPAWTI"/> |
+| <img src="game_files/images/igto_ashuaw.png" width="120" alt="ASHUAW"/> | **ASHUAW** | <img src="game_files/images/mawdige_ashuaw.png" width="120" alt="ASHUAW"/> |
+| <img src="game_files/images/igto_gawja.png" width="120" alt="GAWJA"/> | **GAWJA / THASTIN** | <img src="game_files/images/mawdige_thastin.png" width="120" alt="THASTIN"/> |
+| <img src="game_files/images/igto_por.png" width="120" alt="PORLE"/> | **POR** | <img src="game_files/images/mawdige_por.png" width="120" alt="STENAPTI"/> |
+| <img src="game_files/images/igto_rawdaw.png" width="120" alt="RAWDAW"/> | **RAWD** | <img src="game_files/images/mawdige_raja.png" width="120" alt="RAJA"/> |
+| <img src="game_files/images/igto_rathaw.png" width="120" alt="RATHAW"/> | **RATHAW** | <img src="game_files/images/mawdige_rathaw.png" width="120" alt="RATHAW"/> |
+
 ---
 
 ## Game Records
