@@ -1,4 +1,4 @@
-![SHETRENGAW — The Game of the Two Peoples](images/shetrengaw_header.svg)
+![SHETRENGAW — The Game of the Two Peoples](game_files/images/shetrengaw_header.svg)
 
 # SHETRENGAW
 
@@ -16,7 +16,7 @@ This asymmetry is not a flaw. It is the soul of the game.
 
 See the full rulebook in `/rules/Shetrengaw_Rulebook_v7.docx`.
 
-![Starting position](images/shetrengaw_board.svg)
+![Starting position](game_files/images/shetrengaw_board.svg)
 
 ## Play Online
 
@@ -26,7 +26,7 @@ Generates a `.stg` game record at the end of each session.
 
 ## Piece Movement Reference
 
-![Piece movement](images/shetrengaw_pieces.svg)
+![Piece movement](game_files/images/shetrengaw_pieces.svg)
 
 ## Game Records
 
