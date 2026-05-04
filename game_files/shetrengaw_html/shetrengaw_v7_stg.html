@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHETRENGAW</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:         #1a1209;
+  --bg2:        #241a0e;
+  --bg3:        #2e2010;
+  --gold:       #c9a84c;
+  --gold2:      #e8c870;
+  --gold-dim:   #7a6030;
+  --border:     #6a5030;
+  --igto:       #4a8fc4;
+  --igto-dim:   #1e4a6e;
+  --igto-bg:    #0e2030;
+  --maw:        #c44a4a;
+  --maw-dim:    #6e1e1e;
+  --maw-bg:     #300e0e;
+  --text:       #f0e6c8;
+  --text-dim:   #a09070;
+  --sq-light:   #c4a870;
+  --sq-dark:    #8b6535;
+  --safe-light: #8aaa70;
+  --safe-dark:  #5a7a45;
+  --mtn-light:  #7a8060;
+  --mtn-dark:   #5a6040;
+  --hi:         #f5e070;
+  --kill-col:   #ff8c00;
+  --cap-col:    #e05050;
+  --shel-col:   #50c870;
+  --check-col:  #e8c870;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  background:var(--bg); color:var(--text);
+  font-family:'Crimson Text',serif;
+  min-height:100vh; display:flex; flex-direction:column;
+  align-items:center; padding:12px;
+  background-image:
+    radial-gradient(ellipse at 20% 20%,rgba(201,168,76,0.06) 0%,transparent 50%),
+    radial-gradient(ellipse at 80% 80%,rgba(201,168,76,0.04) 0%,transparent 50%);
+}
+h1.title { font-family:'Cinzel',serif; font-size:2.2rem; font-weight:900; color:var(--gold); letter-spacing:0.2em; text-align:center; margin-bottom:2px; text-shadow:0 0 40px rgba(201,168,76,0.3); }
+.subtitle { font-size:0.95rem; font-style:italic; color:var(--text-dim); text-align:center; margin-bottom:2px; letter-spacing:0.05em; }
+.version-tag { font-family:'Cinzel',serif; font-size:0.6rem; color:var(--gold-dim); text-align:center; margin-bottom:10px; letter-spacing:0.15em; }
+.game-layout { display:flex; gap:16px; align-items:flex-start; width:100%; max-width:1180px; }
+
+/* ── PANELS ── */
+.side-panel { display:flex; flex-direction:column; gap:10px; width:210px; flex-shrink:0; }
+.card { background:var(--bg2); border:1px solid var(--border); border-radius:5px; padding:10px 12px; }
+.card h3 { font-family:'Cinzel',serif; font-size:0.72rem; color:var(--gold); letter-spacing:0.1em; margin-bottom:7px; padding-bottom:5px; border-bottom:1px solid var(--border); }
+.turn-card { text-align:center; }
+.turn-side { font-family:'Cinzel',serif; font-size:1rem; font-weight:700; margin-bottom:3px; }
+.turn-side.igto { color:var(--igto); }
+.turn-side.maw  { color:var(--maw); }
+.turn-num   { font-size:0.8rem; color:var(--text-dim); }
+.round-info { font-size:0.75rem; color:var(--gold-dim); margin-top:2px; }
+.action-btns { display:flex; flex-direction:column; gap:5px; }
+.abtn { font-family:'Cinzel',serif; font-size:0.66rem; letter-spacing:0.06em; padding:6px 8px; border-radius:3px; border:1px solid var(--border); background:var(--bg3); color:var(--text-dim); cursor:pointer; transition:all 0.12s; text-align:left; }
+.abtn:hover  { border-color:var(--gold-dim); color:var(--gold); background:rgba(201,168,76,0.08); }
+.abtn.active { border-color:var(--gold); color:var(--gold2); background:rgba(201,168,76,0.14); }
+.jail-grid { display:flex; flex-wrap:wrap; gap:4px; min-height:24px; }
+.jp { font-family:'Cinzel',serif; font-size:0.58rem; padding:2px 5px; border-radius:3px; border:1px solid; cursor:default; }
+.jp.igto { color:var(--igto); border-color:var(--igto-dim); background:var(--igto-bg); }
+.jp.maw  { color:var(--maw);  border-color:var(--maw-dim);  background:var(--maw-bg); }
+.jp.drop-ready { cursor:pointer; }
+.jp.drop-ready:hover { filter:brightness(1.5); }
+.jp.selected-jail { outline:2px solid var(--hi); }
+.jail-empty { font-size:0.75rem; font-style:italic; color:var(--text-dim); }
+.srow { display:flex; justify-content:space-between; font-size:0.82rem; padding:2px 0; border-bottom:1px solid rgba(106,80,48,0.25); }
+.srow:last-child { border-bottom:none; }
+.slabel { color:var(--text-dim); }
+.sval { font-family:'Cinzel',serif; font-weight:700; }
+.sval.igto { color:var(--igto); }
+.sval.maw  { color:var(--maw); }
+.stoggle { display:flex; margin-bottom:7px; }
+.stoggle button { flex:1; font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.05em; padding:4px; border:1px solid var(--border); background:var(--bg3); color:var(--text-dim); cursor:pointer; transition:all 0.12s; }
+.stoggle button:first-child { border-radius:3px 0 0 3px; }
+.stoggle button:last-child  { border-radius:0 3px 3px 0; }
+.stoggle button.active { background:rgba(201,168,76,0.14); color:var(--gold); border-color:var(--gold-dim); }
+.log-box { font-size:0.74rem; color:var(--text-dim); max-height:130px; overflow-y:auto; display:flex; flex-direction:column; gap:2px; }
+.le { padding:2px 0; border-bottom:1px solid rgba(106,80,48,0.18); }
+.le.igto-log { color:#7ab8e8; }
+.le.maw-log  { color:#e87a7a; }
+.le.sys      { color:var(--gold-dim); font-style:italic; }
+.le.check    { color:var(--check-col); font-weight:600; }
+#statusText { font-size:0.84rem; color:var(--text-dim); line-height:1.45; }
+.spec-row { font-size:0.78rem; line-height:1.8; color:var(--text-dim); }
+.check-meter { display:flex; gap:4px; margin-top:4px; }
+.check-pip { width:16px; height:16px; border-radius:3px; border:1px solid var(--gold-dim); background:var(--bg3); transition:all 0.2s; }
+.check-pip.filled { background:var(--check-col); border-color:var(--gold); box-shadow:0 0 6px rgba(232,200,112,0.5); }
+
+/* ── BOARD ── */
+.board-wrap { display:flex; flex-direction:column; align-items:center; gap:3px; flex-shrink:0; }
+.file-row { display:flex; align-items:center; gap:2px; padding-left:22px; }
+.flbl { width:62px; font-family:'Cinzel',serif; font-size:0.7rem; color:var(--gold-dim); text-align:center; }
+.board-row { display:flex; align-items:center; gap:2px; }
+.rlbl { font-family:'Cinzel',serif; font-size:0.7rem; color:var(--gold-dim); width:20px; text-align:center; flex-shrink:0; }
+.sq { width:62px; height:62px; position:relative; cursor:pointer; display:flex; align-items:center; justify-content:center; border:1px solid rgba(0,0,0,0.25); transition:filter 0.12s; flex-shrink:0; }
+.sq:hover { filter:brightness(1.18); }
+.sq.sl  { background:var(--sq-light); }
+.sq.sd  { background:var(--sq-dark); }
+.sq.sal { background:var(--safe-light); }
+.sq.sad { background:var(--safe-dark); }
+.sq.ml  { background:var(--mtn-light); }
+.sq.md  { background:var(--mtn-dark); }
+.sq.in-check { outline:3px solid var(--check-col); outline-offset:-3px; animation:checkPulse 0.8s ease-in-out infinite alternate; }
+@keyframes checkPulse { from{box-shadow:0 0 0 0 rgba(232,200,112,0);}to{box-shadow:0 0 12px 4px rgba(232,200,112,0.4);} }
+.sq.selected { outline:3px solid var(--hi); outline-offset:-3px; filter:brightness(1.28); }
+.sq.h-move::after    { content:''; position:absolute; width:20px; height:20px; border-radius:50%; background:rgba(245,224,112,0.6); pointer-events:none; z-index:1; }
+.sq.h-capture::after { content:''; position:absolute; inset:0; border:3px solid var(--cap-col); pointer-events:none; z-index:1; }
+.sq.h-kill::after    { content:''; position:absolute; inset:0; border:3px solid var(--kill-col); box-shadow:inset 0 0 8px rgba(255,140,0,0.35); pointer-events:none; z-index:1; }
+.sq.h-shelter::after { content:''; position:absolute; inset:0; border:3px solid var(--shel-col); pointer-events:none; z-index:1; }
+.sq.h-drop::after    { content:''; position:absolute; width:20px; height:20px; border-radius:50%; background:rgba(200,112,224,0.55); pointer-events:none; z-index:1; }
+.sq.siege-warn { animation:sP 1s ease-in-out infinite alternate; }
+@keyframes sP { from{filter:brightness(1);}to{filter:brightness(1.45) sepia(0.4);} }
+.pc { display:flex; flex-direction:column; align-items:center; justify-content:center; width:56px; height:56px; border-radius:3px; pointer-events:none; user-select:none; position:relative; z-index:2; }
+.pc.igto { background:rgba(14,32,48,0.85); border:1.5px solid var(--igto); }
+.pc.maw  { background:rgba(48,14,14,0.85); border:1.5px solid var(--maw); }
+.pc-code { font-family:'Cinzel',serif; font-size:0.62rem; font-weight:700; letter-spacing:0.04em; }
+.pc.igto .pc-code { color:var(--igto); }
+.pc.maw  .pc-code { color:var(--maw); }
+.pc-name { font-family:'Crimson Text',serif; font-size:0.5rem; font-style:italic; margin-top:1px; }
+.pc.igto .pc-name { color:#7ab8e8; }
+.pc.maw  .pc-name { color:#e87a7a; }
+.pc.promoted .pc-code::after { content:'★'; font-size:0.42rem; vertical-align:super; }
+
+/* ── MODAL ── */
+.modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.78); display:flex; align-items:center; justify-content:center; z-index:100; backdrop-filter:blur(4px); }
+.modal-overlay.hidden { display:none; }
+.modal-box { background:var(--bg2); border:2px solid var(--gold-dim); border-radius:8px; padding:28px 36px; text-align:center; max-width:480px; width:90%; }
+.modal-box h2 { font-family:'Cinzel',serif; font-size:1.4rem; color:var(--gold); margin-bottom:8px; letter-spacing:0.1em; }
+.modal-box p  { color:var(--text-dim); margin-bottom:6px; font-size:0.95rem; line-height:1.5; }
+.modal-score  { font-family:'Cinzel',serif; font-size:1.1rem; margin:14px 0; line-height:2; }
+.modal-btn { font-family:'Cinzel',serif; font-size:0.8rem; letter-spacing:0.1em; padding:9px 22px; border-radius:4px; border:1px solid var(--gold-dim); background:rgba(201,168,76,0.12); color:var(--gold); cursor:pointer; margin:5px; transition:all 0.12s; }
+.modal-btn:hover { background:rgba(201,168,76,0.22); border-color:var(--gold); }
+.modal-btn.download-btn { border-color:#50c870; color:#50c870; background:rgba(80,200,112,0.1); }
+.modal-btn.download-btn:hover { background:rgba(80,200,112,0.2); }
+.stg-note { font-size:0.78rem; color:var(--text-dim); font-style:italic; margin-top:8px; }
+::-webkit-scrollbar { width:4px; }
+::-webkit-scrollbar-track { background:var(--bg); }
+::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
+</style>
+</head>
+<body>
+
+<h1 class="title">SHETRENGAW</h1>
+<p class="subtitle">The Game of the Two Peoples</p>
+<p class="version-tag">RULES VERSION 7 — with STG download</p>
+
+<div class="game-layout">
+
+  <!-- LEFT PANEL -->
+  <div class="side-panel">
+    <div class="card turn-card">
+      <div class="turn-side maw" id="turnSide">MAWDIGE</div>
+      <div class="turn-num"   id="turnNum">Turn 1 of 80</div>
+      <div class="round-info" id="roundInfo">Round 1 of 2</div>
+    </div>
+    <div class="card">
+      <h3>ACTION</h3>
+      <div class="action-btns">
+        <button class="abtn active" id="aMove"    onclick="setAction('move')">★ MOVE — Vedux</button>
+        <button class="abtn"        id="aTopple"  onclick="setAction('topple')">★ TOPPLE — Oniawxt (jail)</button>
+        <button class="abtn"        id="aKill"    onclick="setAction('kill')">★ KILL — Nineut (remove)</button>
+        <button class="abtn"        id="aShelter" onclick="setAction('shelter')">★ SHELTER — Dawminia</button>
+        <button class="abtn"        id="aDrop"    onclick="setAction('drop')">★ DROP — Pawrawt</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>IGTO JAIL — <span style="color:var(--igto)" id="igtoJailCount">0</span></h3>
+      <div class="jail-grid" id="igtoJail"></div>
+    </div>
+    <div class="card">
+      <h3>SCORING</h3>
+      <div class="stoggle">
+        <button id="sFriendly"    class="active" onclick="setScoringMode('friendly')">★ FRIENDLY</button>
+        <button id="sCompetitive"              onclick="setScoringMode('competitive')">◆ COMPETE</button>
+      </div>
+      <div class="srow"><span class="slabel">Igto round</span>  <span class="sval igto" id="igtoScore">0</span></div>
+      <div class="srow"><span class="slabel">Maw round</span>   <span class="sval maw"  id="mawScore">0</span></div>
+      <div class="srow"><span class="slabel">Igto session</span><span class="sval igto" id="igtoSess">0</span></div>
+      <div class="srow"><span class="slabel">Maw session</span> <span class="sval maw"  id="mawSess">0</span></div>
+    </div>
+  </div>
+
+  <!-- BOARD -->
+  <div class="board-wrap" id="boardWrap"></div>
+
+  <!-- RIGHT PANEL -->
+  <div class="side-panel">
+    <div class="card">
+      <h3>STATUS</h3>
+      <div id="statusText">Mawdige moves first. Select an action, then a piece.</div>
+    </div>
+    <div class="card">
+      <h3>MAWDIGE JAIL — <span style="color:var(--maw)" id="mawJailCount">0</span></h3>
+      <div class="jail-grid" id="mawJail"></div>
+    </div>
+    <div class="card">
+      <h3>SPECIAL</h3>
+      <div class="spec-row">
+        RAWDAW captured: <span id="rawdawGone" style="color:var(--maw)">No</span><br>
+        Drop suspended:  <span id="dropSusp"   style="color:var(--maw)">No</span><br>
+        Maw captures:    <span id="mawCaps"    style="color:var(--gold)">0 / 2</span><br>
+        JailBreak risk:  <span id="jbRisk"     style="color:var(--gold)">—</span>
+      </div>
+      <div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--border);">
+        <div style="font-size:0.72rem;color:var(--gold);font-family:'Cinzel',serif;letter-spacing:0.06em;margin-bottom:4px;">RAJA UNDER PURSUIT</div>
+        <div class="check-meter">
+          <div class="check-pip" id="pip0"></div>
+          <div class="check-pip" id="pip1"></div>
+          <div class="check-pip" id="pip2"></div>
+        </div>
+        <div style="font-size:0.7rem;color:var(--text-dim);margin-top:3px;">
+          <span id="checkTurns">0</span>/3 turns — win at 3
+          <span id="checkPtsNote" style="color:var(--check-col);display:none"> (+1pt/turn ◆)</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>GAME LOG</h3>
+      <div class="log-box" id="gameLog"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay hidden" id="modal">
+  <div class="modal-box">
+    <h2 id="modalTitle">Round Over</h2>
+    <p  id="modalBody"></p>
+    <div class="modal-score" id="modalScore"></div>
+    <div id="modalSessionOutcome" style="font-family:'Cinzel',serif;font-size:0.9rem;color:var(--gold);margin-bottom:12px;display:none;"></div>
+    <button class="modal-btn" id="modalBtn1" onclick="modalNext()">Next Round</button>
+    <button class="modal-btn" id="modalBtn2" onclick="modalNew()" style="display:none">New Session</button>
+    <button class="modal-btn download-btn" id="modalBtnDl" onclick="downloadSTG()" style="display:none">⬇ Download Game Record (.stg)</button>
+    <p class="stg-note" id="stgNote" style="display:none">Save this file to share or archive this session.</p>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+// ════════════════════════════════════════════════════════
+// CONSTANTS
+// ════════════════════════════════════════════════════════
+const RULES_VERSION = '7';
+const FILES = ['D','T','C','B','N','S','M','G'];
+const RANKS_DISPLAY = [8,7,6,5,4,3,2,1];
+const TURN_LIMIT = 80;
+const TURN_WIN_BONUS = 5;
+const CHECK_TURNS_TO_WIN = 3;
+const COMP_CHECK_WIN_BONUS = 15;
+const COMP_CHECK_PRESSURE  = 1;
+
+const SAFE = new Set(['D4','B4','N4','G4','D5','B5','N5','G5']);
+
+const INFO = {
+  RAWD:   { igName:'RAWDAW', mwName:'RAJA',     code:'RD', val:0 },
+  POR:    { igName:'PORLE',  mwName:'STENAPTI', code:'PO', val:6 },
+  RATHAW: { igName:'RATHAW', mwName:'RATHAW',   code:'RT', val:7 },
+  GAWJA:  { igName:'GAWJA',  mwName:'THASTIN',  code:'GW', val:3 },
+  ASHUAW: { igName:'ASHUAW', mwName:'ASHUAW',   code:'AS', val:4 },
+  TISHLE: { igName:'STENICA',mwName:'NPAWTI',   code:'TI', val:1 },
+};
+
+// ════════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════════
+let board={}, side='maw', action='move';
+let selSq=null, selJail=null, highlights=[];
+let turn=1, round=1;
+let igtoJail=[], mawJail=[];
+let scoringMode='friendly';
+let roundSc={igto:0,maw:0}, sessSc={igto:0,maw:0};
+let rawdawGone=false, mawExtraCaps=0;
+let siegeMap={}, posHistory=[], gameOver=false;
+let round1Winner=null, rajaEverChecked=false;
+let consecutiveCheckTurns=0;
+
+// ── STG record state ──────────────────────────────────
+let sessionRecord = null;   // built at session start
+let roundRecords  = [];     // one entry per completed round
+
+// ════════════════════════════════════════════════════════
+// COORDINATE HELPERS
+// ════════════════════════════════════════════════════════
+const fi    = s => FILES.indexOf(s[0]);
+const rank  = s => +s.slice(1);
+const isSafe = s => SAFE.has(s);
+const isMtn  = s => rank(s)===4||rank(s)===5;
+function sqAt(f,r){ return f>=0&&f<=7&&r>=1&&r<=8?FILES[f]+r:null; }
+function adj8(s){
+  const out=[];
+  for(let df=-1;df<=1;df++) for(let dr=-1;dr<=1;dr++){
+    if(!df&&!dr) continue;
+    const n=sqAt(fi(s)+df,rank(s)+dr); if(n) out.push(n);
+  }
+  return out;
+}
+
+// ════════════════════════════════════════════════════════
+// BOARD INIT
+// ════════════════════════════════════════════════════════
+function initBoard(){
+  board={};
+  const igBack=['GAWJA','RATHAW','ASHUAW','RAWD','POR','ASHUAW','RATHAW','GAWJA'];
+  const mwBack=['GAWJA','RATHAW','POR','ASHUAW','RAWD','ASHUAW','RATHAW','GAWJA'];
+  FILES.forEach((f,i)=>{ board[f+'1']={type:igBack[i],side:'igto',promoted:false}; });
+  FILES.forEach(f    =>{ board[f+'2']={type:'TISHLE',  side:'igto',promoted:false}; });
+  FILES.forEach((f,i)=>{ board[f+'8']={type:mwBack[i], side:'maw', promoted:false}; });
+  FILES.forEach(f    =>{ board[f+'7']={type:'TISHLE',  side:'maw', promoted:false}; });
+}
+
+// ════════════════════════════════════════════════════════
+// MOVE GENERATION
+// ════════════════════════════════════════════════════════
+function slideSquares(s,dirs){
+  const out=[];
+  for(const [df,dr] of dirs){
+    let f2=fi(s),r2=rank(s);
+    while(true){ f2+=df; r2+=dr; const n=sqAt(f2,r2); if(!n) break; out.push(n); if(board[n]) break; }
+  }
+  return out;
+}
+
+function reachable(s){
+  const p=board[s]; if(!p) return [];
+  const {type,side:ps,promoted}=p;
+  const f0=fi(s),r0=rank(s),fwd=ps==='igto'?1:-1;
+  const out=[];
+  if(type==='RAWD'){
+    const dirs=[[0,fwd],[-1,fwd],[1,fwd],[-1,0],[1,0]];
+    if(ps==='igto') dirs.push([-1,-fwd],[1,-fwd]);
+    for(const [df,dr] of dirs){ const n=sqAt(f0+df,r0+dr); if(n) out.push(n); }
+  } else if(type==='POR'){
+    out.push(...slideSquares(s,[[-1,-1],[-1,1],[1,-1],[1,1]]));
+  } else if(type==='RATHAW'){
+    out.push(...slideSquares(s,[[0,1],[0,-1],[1,0],[-1,0]]));
+  } else if(type==='GAWJA'){
+    const vis=new Set([s]);
+    const q=[{sq:s,steps:0}];
+    while(q.length){
+      const {sq:cur,steps}=q.shift();
+      if(steps>0) out.push(cur);
+      if(steps>=2) continue;
+      for(let df=-1;df<=1;df++) for(let dr=-1;dr<=1;dr++){
+        if(!df&&!dr) continue;
+        const n=sqAt(fi(cur)+df,rank(cur)+dr);
+        if(!n||vis.has(n)||isMtn(n)) continue;
+        vis.add(n);
+        if(board[n]) out.push(n);
+        else q.push({sq:n,steps:steps+1});
+      }
+    }
+  } else if(type==='ASHUAW'){
+    for(const [df,dr] of [[2,1],[2,-1],[-2,1],[-2,-1],[1,2],[1,-2],[-1,2],[-1,-2]]){
+      const n=sqAt(f0+df,r0+dr); if(n) out.push(n);
+    }
+  } else if(type==='TISHLE'){
+    const fwdSq=sqAt(f0,r0+fwd); if(fwdSq&&!board[fwdSq]) out.push(fwdSq);
+    for(const df of[-1,1]){const n=sqAt(f0+df,r0+fwd);if(n&&!board[n])out.push(n);}
+    if(promoted){
+      const bk=sqAt(f0,r0-fwd); if(bk&&!board[bk])out.push(bk);
+      for(const df of[-1,1]){const n=sqAt(f0+df,r0-fwd);if(n&&!board[n])out.push(n);}
+    }
+    const cf=sqAt(f0,r0+fwd); if(cf&&board[cf]&&board[cf].side!==ps)out.push(cf);
+    if(promoted){const cb=sqAt(f0,r0-fwd);if(cb&&board[cb]&&board[cb].side!==ps)out.push(cb);}
+  }
+  return [...new Set(out)];
+}
+
+function captureSquares(s){
+  const p=board[s]; if(!p) return [];
+  if(p.type==='TISHLE'){
+    const ps=p.side,fwd=ps==='igto'?1:-1,f0=fi(s),r0=rank(s),out=[];
+    const cf=sqAt(f0,r0+fwd); if(cf&&board[cf]&&board[cf].side!==ps)out.push(cf);
+    if(p.promoted){const cb=sqAt(f0,r0-fwd);if(cb&&board[cb]&&board[cb].side!==ps)out.push(cb);}
+    return out;
+  }
+  return reachable(s).filter(n=>board[n]&&board[n].side!==p.side);
+}
+
+function legalFor(s,act){
+  const p=board[s]; if(!p||p.side!==side) return [];
+  if(act==='move'){
+    if(isSafe(s)) return adj8(s).filter(n=>!board[n]&&!isSafe(n));
+    const caps=new Set(captureSquares(s));
+    return reachable(s).filter(n=>!board[n]&&!isSafe(n)&&!caps.has(n));
+  }
+  if(act==='topple'||act==='kill'){
+    if(isSafe(s)) return [];
+    return captureSquares(s).filter(n=>!isSafe(n));
+  }
+  if(act==='shelter'){
+    if(isSafe(s)) return [];
+    return reachable(s).filter(n=>isSafe(n)&&!board[n]);
+  }
+  return [];
+}
+
+function dropSquares(){
+  const rawdSq=Object.keys(board).find(s=>board[s].type==='RAWD'&&board[s].side===side);
+  if(!rawdSq) return [];
+  const r=rank(rawdSq);
+  const [mn,mx]=r<=3?[1,3]:r<=5?[4,5]:[6,8];
+  const out=[];
+  for(const f of FILES) for(let r2=mn;r2<=mx;r2++){const n=f+r2;if(!board[n])out.push(n);}
+  return out;
+}
+
+// ════════════════════════════════════════════════════════
+// CHECK DETECTION
+// ════════════════════════════════════════════════════════
+function findRajaSq(){
+  return Object.keys(board).find(s=>board[s].type==='RAWD'&&board[s].side==='maw')||null;
+}
+function rajaInCheck(){
+  const rajaSq=findRajaSq(); if(!rajaSq) return false;
+  for(const s of Object.keys(board)){
+    if(board[s].side!=='igto') continue;
+    if(captureSquares(s).includes(rajaSq)) return true;
+  }
+  return false;
+}
+
+// ════════════════════════════════════════════════════════
+// SIEGE
+// ════════════════════════════════════════════════════════
+function processSiege(){
+  const next={};
+  for(const s of SAFE){
+    const p=board[s]; if(!p) continue;
+    const enemies=adj8(s).filter(n=>board[n]&&board[n].side!==p.side);
+    if(enemies.length>=2){
+      const turns=(siegeMap[s]?.turns||0)+1;
+      if(turns>=2){
+        addScore(p.side==='igto'?'maw':'igto',scoringMode==='competitive'?3:0);
+        log(`SIEGE — ${p.side.toUpperCase()} ${pName(p)} on ${s} removed!`,'sys');
+        if(sessionRecord) sessionRecord.events.push({type:'siege',turn,square:s,side:p.side});
+        delete board[s];
+      } else { next[s]={turns,piece:p}; }
+    }
+  }
+  siegeMap=next;
+}
+
+// ════════════════════════════════════════════════════════
+// SCORING
+// ════════════════════════════════════════════════════════
+function addScore(who,pts){ if(!pts) return; roundSc[who]+=pts; renderScores(); }
+function pieceScore(p){ if(scoringMode==='friendly') return 1; return (p.promoted&&p.type==='TISHLE')?2:(INFO[p.type].val||1); }
+
+// ════════════════════════════════════════════════════════
+// JAIL BREAK
+// ════════════════════════════════════════════════════════
+function checkJailBreak(){
+  const igOn=Object.values(board).filter(p=>p.side==='igto').length;
+  const igIn=mawJail.length;
+  const mwOn=Object.values(board).filter(p=>p.side==='maw').length;
+  const mwIn=igtoJail.length;
+  if(igOn<igIn){endRound('maw','jailbreak');return true;}
+  if(mwOn<mwIn){endRound('igto','jailbreak');return true;}
+  const igRisk=igOn-igIn,mwRisk=mwOn-mwIn;
+  const el=document.getElementById('jbRisk');
+  if(igRisk<=2||mwRisk<=2){el.textContent=igRisk<=2?`Igto (${igRisk})`:`Maw (${mwRisk})`;el.style.color='#e05050';}
+  else{el.textContent='—';el.style.color='var(--gold)';}
+  return false;
+}
+
+// ════════════════════════════════════════════════════════
+// WIN CHECK
+// ════════════════════════════════════════════════════════
+function checkWin(){
+  if(rawdawGone&&mawExtraCaps>=2){endRound('maw','condition');return;}
+  const mwPcs=Object.values(board).filter(p=>p.side==='maw');
+  const igPcs=Object.values(board).filter(p=>p.side==='igto');
+  if(mwPcs.length===0){endRound('igto','elimination');return;}
+  if(igPcs.length===0){endRound('maw','condition');return;}
+  const rajaSq=findRajaSq();
+  if(!rajaSq){endRound('igto','capture');return;}
+}
+
+// ════════════════════════════════════════════════════════
+// CHECK COUNTER
+// ════════════════════════════════════════════════════════
+function updateCheckCounter(){
+  if(side!=='igto') return;
+  const rajaSq=findRajaSq(); if(!rajaSq) return;
+  if(rajaInCheck()){
+    consecutiveCheckTurns++;
+    rajaEverChecked=true;
+    if(scoringMode==='competitive'){
+      addScore('igto',COMP_CHECK_PRESSURE);
+      log(`RAJA in check! Pursuit: ${consecutiveCheckTurns}/${CHECK_TURNS_TO_WIN} (+${COMP_CHECK_PRESSURE}pt)`,'check');
+    } else {
+      log(`RAJA in check! Pursuit: ${consecutiveCheckTurns}/${CHECK_TURNS_TO_WIN}`,'check');
+    }
+    if(sessionRecord) sessionRecord.events.push({type:'check',turn,consecutiveTurn:consecutiveCheckTurns});
+    renderCheckMeter();
+    if(consecutiveCheckTurns>=CHECK_TURNS_TO_WIN){ endRound('igto','persistent_check'); }
+  } else {
+    if(consecutiveCheckTurns>0) log(`RAJA escaped pursuit. Counter reset.`,'sys');
+    consecutiveCheckTurns=0;
+    renderCheckMeter();
+  }
+}
+
+// ════════════════════════════════════════════════════════
+// END ROUND
+// ════════════════════════════════════════════════════════
+function endRound(winner,reason){
+  gameOver=true;
+  let bonus=0,desc='';
+  if(winner==='igto'){
+    if(reason==='elimination'){      bonus=scoringMode==='friendly'?10:15; desc='Igto eliminated all Mawdige!'; }
+    else if(reason==='persistent_check'){ bonus=scoringMode==='friendly'?10:COMP_CHECK_WIN_BONUS; desc='Igto wins — RAJA under pursuit for 3 turns!'; }
+    else if(reason==='capture'){     bonus=scoringMode==='friendly'?10:10; desc='Igto captured the RAJA!'; }
+    else if(reason==='points'){      bonus=TURN_WIN_BONUS; desc='Igto wins on points!'; }
+    else{                            bonus=scoringMode==='friendly'?10:10; desc='Mawdige Jail Break Loss!'; }
+  } else {
+    if(reason==='points'){           bonus=TURN_WIN_BONUS; desc='Mawdige wins on points!'; }
+    else if(reason==='jailbreak'){   bonus=scoringMode==='friendly'?10:12; desc='Igto Jail Break Loss!'; }
+    else{                            bonus=scoringMode==='friendly'?10:12; desc='Mawdige: RAWDAW + 2 captures!'; }
+  }
+  addScore(winner,bonus);
+  if(turn<=30&&scoringMode==='competitive'&&reason!=='points') addScore(winner,2);
+  if(scoringMode==='friendly'&&winner==='igto'&&!rajaEverChecked&&reason!=='points'){
+    addScore('igto',2); log('Igto clean win bonus (+2)!','igto-log');
+  }
+  log(desc,'sys');
+
+  // Record round result
+  roundRecords.push({
+    round,
+    igtoSide: round===1?'player1':'player2',
+    mawSide:  round===1?'player2':'player1',
+    winner,
+    winCondition: reason,
+    turns: turn,
+    finalScores: { igto: roundSc.igto + (winner==='igto'?bonus:0), maw: roundSc.maw + (winner==='maw'?bonus:0) },
+    scoringMode,
+    keyEvents: sessionRecord ? [...sessionRecord.events] : [],
+  });
+  // Reset event log for next round
+  if(sessionRecord) sessionRecord.events = [];
+
+  showModal(winner,desc);
+}
+
+function endTurnLimit(){
+  gameOver=true;
+  if(roundSc.igto>roundSc.maw)      endRound('igto','points');
+  else if(roundSc.maw>roundSc.igto) endRound('maw','points');
+  else{
+    // True draw
+    roundRecords.push({ round, winner:null, winCondition:'truedraw', turns:turn,
+      finalScores:{...roundSc}, scoringMode, keyEvents: sessionRecord?[...sessionRecord.events]:[] });
+    if(sessionRecord) sessionRecord.events=[];
+    log('Scores tied at time limit — true draw!','sys');
+    showModal(null,'Scores perfectly tied — draw!');
+    gameOver=true;
+  }
+}
+
+function endDraw(){
+  gameOver=true;
+  roundRecords.push({ round, winner:null, winCondition:'repetition', turns:turn,
+    finalScores:{...roundSc}, scoringMode, keyEvents:sessionRecord?[...sessionRecord.events]:[] });
+  if(sessionRecord) sessionRecord.events=[];
+  log('Threefold repetition — draw!','sys');
+  showModal(null,'Threefold repetition — draw!');
+}
+
+// ════════════════════════════════════════════════════════
+// EXECUTE MOVES
+// ════════════════════════════════════════════════════════
+function doMove(from,to){ board[to]={...board[from]}; delete board[from]; checkPromotion(to); }
+
+function doTopple(from,to){
+  const atk=board[from],vic=board[to];
+  addScore(atk.side,pieceScore(vic));
+  log(`${capName(atk.side)} toppled ${pName(vic)} (+${pieceScore(vic)})`,atk.side==='igto'?'igto-log':'maw-log');
+  if(atk.side==='igto') igtoJail.push({type:vic.type,side:'igto',promoted:false});
+  else                  mawJail.push({type:vic.type,side:'maw',promoted:false});
+  if(vic.type==='RAWD'&&vic.side==='igto'){rawdawGone=true;log('RAWDAW captured — Drop suspended!','sys');}
+  if(vic.type==='RAWD'&&vic.side==='maw'){
+    board[to]={...atk}; delete board[from]; checkPromotion(to);
+    endRound('igto','capture'); return;
+  }
+  if(rawdawGone&&atk.side==='maw') mawExtraCaps++;
+  board[to]={...atk}; delete board[from]; checkPromotion(to);
+}
+
+function doKill(from,to){
+  const atk=board[from],vic=board[to];
+  if(vic.type==='RAWD'&&vic.side==='maw'){doTopple(from,to);return;}
+  addScore(atk.side,pieceScore(vic));
+  log(`${capName(atk.side)} killed ${pName(vic)} — removed (+${pieceScore(vic)})`,atk.side==='igto'?'igto-log':'maw-log');
+  if(vic.type==='RAWD'&&vic.side==='igto'){rawdawGone=true;log('RAWDAW killed — Drop suspended!','sys');}
+  if(rawdawGone&&atk.side==='maw') mawExtraCaps++;
+  board[to]={...atk}; delete board[from]; checkPromotion(to);
+}
+
+function doDrop(jailPiece,to){
+  board[to]={type:jailPiece.type,side,promoted:false};
+  if(side==='igto'){const i=igtoJail.findIndex(p=>p.type===jailPiece.type);if(i>=0)igtoJail.splice(i,1);}
+  else             {const i=mawJail.findIndex(p=>p.type===jailPiece.type); if(i>=0)mawJail.splice(i,1);}
+  log(`${capName(side)} dropped ${pName(board[to])} on ${to}`,side==='igto'?'igto-log':'maw-log');
+}
+
+function checkPromotion(s){
+  const p=board[s]; if(!p||p.type!=='TISHLE'||p.promoted) return;
+  if((p.side==='igto'&&rank(s)>=7)||(p.side==='maw'&&rank(s)<=2)){
+    board[s].promoted=true;
+    log(`${pName(p)} promoted on ${s}!`,p.side==='igto'?'igto-log':'maw-log');
+  }
+}
+
+// ════════════════════════════════════════════════════════
+// END TURN
+// ════════════════════════════════════════════════════════
+function endTurn(){
+  processSiege();
+  if(gameOver){renderAll();return;}
+  if(checkJailBreak()){renderAll();return;}
+  checkWin();
+  if(gameOver){renderAll();return;}
+  updateCheckCounter();
+  if(gameOver){renderAll();return;}
+  const pos=JSON.stringify(board);
+  posHistory.push(pos);
+  if(posHistory.filter(p=>p===pos).length>=3){endDraw();renderAll();return;}
+  if(turn>=TURN_LIMIT){endTurnLimit();renderAll();return;}
+  side=side==='igto'?'maw':'igto';
+  turn++;
+  selSq=null; selJail=null; highlights=[]; action='move';
+  renderAll();
+}
+
+// ════════════════════════════════════════════════════════
+// INPUT
+// ════════════════════════════════════════════════════════
+function setAction(act){
+  if(gameOver) return;
+  action=act; selSq=null; selJail=null; highlights=[];
+  document.querySelectorAll('.abtn').forEach(b=>b.classList.remove('active'));
+  const map={move:'aMove',topple:'aTopple',kill:'aKill',shelter:'aShelter',drop:'aDrop'};
+  document.getElementById(map[act])?.classList.add('active');
+  renderBoard(); renderJails(); updateStatus();
+}
+
+function onSquareClick(s){
+  if(gameOver) return;
+  if(action==='drop'){
+    if(!selJail){setStatus('Select a piece from your jail first.');return;}
+    if(highlights.includes(s)){doDrop(selJail,s);selJail=null;highlights=[];endTurn();}
+    return;
+  }
+  if(board[s]&&board[s].side===side){
+    selSq=s; highlights=legalFor(s,action); renderBoard(); updateStatus(); return;
+  }
+  if(selSq&&highlights.includes(s)){
+    if(action==='move'||action==='shelter') doMove(selSq,s);
+    else if(action==='topple'){doTopple(selSq,s);if(gameOver){renderAll();return;}}
+    else if(action==='kill')  {doKill(selSq,s);  if(gameOver){renderAll();return;}}
+    selSq=null; highlights=[]; endTurn(); return;
+  }
+  selSq=null; highlights=[]; renderBoard(); updateStatus();
+}
+
+function onJailClick(type,jSide){
+  if(gameOver||action!=='drop') return;
+  if(jSide!==side) return;
+  if(side==='igto'&&rawdawGone){setStatus('Drop suspended — RAWDAW captured.');return;}
+  selJail={type,side}; highlights=dropSquares();
+  renderBoard(); renderJails(); updateStatus();
+}
+
+// ════════════════════════════════════════════════════════
+// STG RECORD
+// ════════════════════════════════════════════════════════
+function initSessionRecord(){
+  sessionRecord = {
+    formatVersion: '1.0',
+    rulesVersion: RULES_VERSION,
+    timestamp: new Date().toISOString(),
+    scoringMode,
+    events: [],   // running event list, reset each round
+  };
+  roundRecords = [];
+}
+
+function buildSTG(){
+  const si = sessSc.igto + (roundRecords[1]?.finalScores?.igto||0);
+  const sm = sessSc.maw  + (roundRecords[1]?.finalScores?.maw ||0);
+
+  // Session outcome
+  const r1w = roundRecords[0]?.winner||null;
+  const r2w = roundRecords[1]?.winner||null;
+  let sessionOutcome = 'incomplete';
+  if(r1w&&r2w){
+    if(r1w==='igto'&&r2w==='igto') sessionOutcome=si>sm?'TotalVictory_Igto':'PyrrhicVictory_Igto';
+    else if(r1w==='maw'&&r2w==='maw') sessionOutcome=sm>si?'TotalVictory_Mawdige':'PyrrhicVictory_Mawdige';
+    else sessionOutcome=si>sm?'MoralVictory_Igto':sm>si?'MoralVictory_Mawdige':'StandardVictory_tie';
+  } else if(r1w||r2w){
+    sessionOutcome='incomplete';
+  }
+
+  const record = {
+    format: 'SHETRENGAW_GAME_RECORD',
+    formatVersion: '1.0',
+    rulesVersion: RULES_VERSION,
+    timestamp: sessionRecord?.timestamp||new Date().toISOString(),
+    scoringMode,
+    rounds: roundRecords.map(r=>({
+      round: r.round,
+      igtoSide: r.igtoSide||'player1',
+      mawSide:  r.mawSide||'player2',
+      winner: r.winner,
+      winCondition: r.winCondition,
+      turns: r.turns,
+      finalScores: r.finalScores,
+      keyEvents: (r.keyEvents||[]).filter(e=>e.type!=='check'||e.consecutiveTurn===3),
+    })),
+    sessionOutcome,
+    sessionScores: {
+      player1: { igtoRound:roundRecords[0]?.finalScores?.igto||0, mawRound:roundRecords[1]?.finalScores?.maw||0 },
+      player2: { mawRound:roundRecords[0]?.finalScores?.maw||0,   igtoRound:roundRecords[1]?.finalScores?.igto||0 },
+    },
+    totalScores: {
+      igto: roundRecords.reduce((a,r)=>a+(r.finalScores?.igto||0),0),
+      maw:  roundRecords.reduce((a,r)=>a+(r.finalScores?.maw||0),0),
+    },
+  };
+  return JSON.stringify(record, null, 2);
+}
+
+function downloadSTG(){
+  const stg = buildSTG();
+  const ts  = new Date().toISOString().slice(0,10);
+  const filename = `shetrengaw_${ts}.stg`;
+  const blob = new Blob([stg], {type:'application/json'});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href=url; a.download=filename; a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ════════════════════════════════════════════════════════
+// MODAL
+// ════════════════════════════════════════════════════════
+function showModal(winner,desc){
+  const g=id=>document.getElementById(id);
+  const outcomeEl=g('modalSessionOutcome');
+  const dlBtn=g('modalBtnDl');
+  const stgNote=g('stgNote');
+
+  outcomeEl.style.display='none';
+  dlBtn.style.display='none';
+  stgNote.style.display='none';
+
+  if(round===1){
+    g('modalTitle').textContent=winner?`${winner.toUpperCase()} WINS ROUND 1`:'DRAW — ROUND 1';
+    g('modalBody').textContent=desc;
+    g('modalScore').innerHTML=`<span style="color:var(--igto)">Igto: ${roundSc.igto}</span><br><span style="color:var(--maw)">Mawdige: ${roundSc.maw}</span>`;
+    g('modalBtn1').textContent='Begin Round 2';
+    g('modalBtn1').style.display='inline-block';
+    g('modalBtn2').style.display='none';
+    round1Winner=winner;
+  } else {
+    const si=sessSc.igto+roundSc.igto, sm=sessSc.maw+roundSc.maw;
+    const outcome=sessionOutcomeText(round1Winner,winner,si,sm);
+    const sw=si>sm?'IGTO':sm>si?'MAWDIGE':'TIE';
+
+    g('modalTitle').textContent='SESSION COMPLETE';
+    g('modalBody').textContent=desc;
+    g('modalScore').innerHTML=
+      `<span style="color:var(--igto)">Igto total: ${si}</span><br>` +
+      `<span style="color:var(--maw)">Mawdige total: ${sm}</span><br><br>` +
+      `<strong style="color:var(--gold)">${sw} WINS THE SESSION</strong>`;
+
+    outcomeEl.textContent=outcome;
+    outcomeEl.style.display='block';
+
+    g('modalBtn1').style.display='none';
+    g('modalBtn2').style.display='inline-block';
+    dlBtn.style.display='inline-block';
+    stgNote.style.display='block';
+  }
+  document.getElementById('modal').classList.remove('hidden');
+}
+
+function sessionOutcomeText(r1,r2,si,sm){
+  if(r1==='igto'&&r2==='igto') return si>sm?'TOTAL VICTORY — Igto':'PYRRHIC VICTORY — Igto';
+  if(r1==='maw' &&r2==='maw')  return sm>si?'TOTAL VICTORY — Mawdige':'PYRRHIC VICTORY — Mawdige';
+  return si>sm?'MORAL VICTORY — Igto':sm>si?'MORAL VICTORY — Mawdige':'STANDARD VICTORY';
+}
+
+function modalNext(){
+  sessSc.igto+=roundSc.igto; sessSc.maw+=roundSc.maw;
+  round=2; startRound();
+  document.getElementById('modal').classList.add('hidden');
+}
+function modalNew(){
+  sessSc={igto:0,maw:0}; round=1; startRound();
+  document.getElementById('modal').classList.add('hidden');
+}
+
+function startRound(){
+  board={}; igtoJail=[]; mawJail=[]; roundSc={igto:0,maw:0};
+  side='maw'; turn=1; selSq=null; selJail=null; highlights=[]; action='move';
+  rawdawGone=false; mawExtraCaps=0; siegeMap={}; posHistory=[];
+  gameOver=false; rajaEverChecked=false; consecutiveCheckTurns=0;
+  if(round===1){ initSessionRecord(); roundRecords=[]; }
+  else if(sessionRecord){ sessionRecord.events=[]; }
+  initBoard(); renderAll();
+  log(`Round ${round} begins. Mawdige moves first.`,'sys');
+}
+
+// ════════════════════════════════════════════════════════
+// RENDERING
+// ════════════════════════════════════════════════════════
+function renderAll(){ renderBoard(); renderJails(); renderScores(); renderTurn(); renderSpecial(); renderCheckMeter(); updateStatus(); }
+
+function sqClass(s){
+  const f=fi(s),r=rank(s),light=(f+r)%2===0;
+  if(isSafe(s)) return light?'sal':'sad';
+  if(isMtn(s))  return light?'ml':'md';
+  return light?'sl':'sd';
+}
+
+function renderBoard(){
+  const wrap=document.getElementById('boardWrap'); wrap.innerHTML='';
+  const topRow=document.createElement('div'); topRow.className='file-row';
+  FILES.forEach(f=>{const d=document.createElement('div');d.className='flbl';d.textContent=f;topRow.appendChild(d);});
+  wrap.appendChild(topRow);
+
+  const rajaSq=findRajaSq(), checked=rajaInCheck();
+
+  for(const r of RANKS_DISPLAY){
+    const row=document.createElement('div'); row.className='board-row';
+    const rl=document.createElement('div'); rl.className='rlbl'; rl.textContent=r; row.appendChild(rl);
+    for(const f of FILES){
+      const s=f+r;
+      const sqEl=document.createElement('div');
+      sqEl.className='sq '+sqClass(s);
+      sqEl.onclick=()=>onSquareClick(s);
+      if(selSq===s) sqEl.classList.add('selected');
+      if(siegeMap[s]) sqEl.classList.add('siege-warn');
+      if(s===rajaSq&&checked) sqEl.classList.add('in-check');
+      if(highlights.includes(s)){
+        if(action==='shelter') sqEl.classList.add('h-shelter');
+        else if(action==='drop') sqEl.classList.add('h-drop');
+        else if(board[s]&&board[s].side!==side) sqEl.classList.add(action==='kill'?'h-kill':'h-capture');
+        else sqEl.classList.add('h-move');
+      }
+      const p=board[s];
+      if(p){
+        const pc=document.createElement('div'); pc.className=`pc ${p.side}${p.promoted?' promoted':''}`;
+        const code=document.createElement('div'); code.className='pc-code'; code.textContent=INFO[p.type].code;
+        const name=document.createElement('div'); name.className='pc-name'; name.textContent=p.side==='igto'?INFO[p.type].igName:INFO[p.type].mwName;
+        pc.appendChild(code); pc.appendChild(name); sqEl.appendChild(pc);
+      }
+      row.appendChild(sqEl);
+    }
+    const rr=document.createElement('div'); rr.className='rlbl'; rr.textContent=r; row.appendChild(rr);
+    wrap.appendChild(row);
+  }
+
+  const botRow=document.createElement('div'); botRow.className='file-row';
+  FILES.forEach(f=>{const d=document.createElement('div');d.className='flbl';d.textContent=f;botRow.appendChild(d);});
+  wrap.appendChild(botRow);
+}
+
+function renderJails(){ renderJailPanel('igtoJail','igtoJailCount',igtoJail,'igto'); renderJailPanel('mawJail','mawJailCount',mawJail,'maw'); }
+
+function renderJailPanel(elId,countId,pieces,jSide){
+  const el=document.getElementById(elId); el.innerHTML='';
+  document.getElementById(countId).textContent=pieces.length;
+  if(!pieces.length){el.innerHTML='<span class="jail-empty">Empty</span>';return;}
+  const counts={}; pieces.forEach(p=>{counts[p.type]=(counts[p.type]||0)+1;});
+  const canDrop=action==='drop'&&side===jSide&&!(jSide==='igto'&&rawdawGone);
+  for(const [type,cnt] of Object.entries(counts)){
+    const d=document.createElement('div');
+    d.className=`jp ${jSide}${canDrop?' drop-ready':''}`;
+    if(selJail&&selJail.type===type&&selJail.side===jSide) d.classList.add('selected-jail');
+    d.textContent=`${INFO[type].code}×${cnt}`; d.title=jSide==='igto'?INFO[type].igName:INFO[type].mwName;
+    if(canDrop) d.onclick=()=>onJailClick(type,jSide);
+    el.appendChild(d);
+  }
+}
+
+function renderScores(){
+  document.getElementById('igtoScore').textContent=roundSc.igto;
+  document.getElementById('mawScore').textContent =roundSc.maw;
+  document.getElementById('igtoSess').textContent =sessSc.igto+roundSc.igto;
+  document.getElementById('mawSess').textContent  =sessSc.maw+roundSc.maw;
+}
+
+function renderTurn(){
+  const el=document.getElementById('turnSide');
+  el.textContent=side==='igto'?'IGTO':'MAWDIGE';
+  el.className='turn-side '+(side==='igto'?'igto':'maw');
+  document.getElementById('turnNum').textContent=`Turn ${turn} of ${TURN_LIMIT}`;
+  document.getElementById('roundInfo').textContent=`Round ${round} of 2`;
+}
+
+function renderSpecial(){
+  document.getElementById('rawdawGone').textContent=rawdawGone?'YES':'No';
+  document.getElementById('dropSusp').textContent=rawdawGone?'YES (Igto)':'No';
+  document.getElementById('mawCaps').textContent=`${mawExtraCaps} / 2`;
+  document.getElementById('checkPtsNote').style.display=scoringMode==='competitive'?'inline':'none';
+}
+
+function renderCheckMeter(){
+  for(let i=0;i<CHECK_TURNS_TO_WIN;i++){
+    const pip=document.getElementById(`pip${i}`);
+    if(pip) pip.classList.toggle('filled',i<consecutiveCheckTurns);
+  }
+  document.getElementById('checkTurns').textContent=consecutiveCheckTurns;
+}
+
+function updateStatus(){
+  let msg='';
+  if(gameOver) msg='Round complete.';
+  else if(action==='move')    msg='Select a piece to move.';
+  else if(action==='topple')  msg='Select a piece, then an enemy — goes to jail.';
+  else if(action==='kill')    msg='Select a piece, then an enemy — removed permanently.';
+  else if(action==='shelter') msg='Select a piece to shelter in a mountain safe space.';
+  else if(action==='drop'){
+    if(side==='igto'&&rawdawGone) msg='Drop suspended — RAWDAW captured.';
+    else if(!selJail) msg='Select a piece from your jail, then a target square.';
+    else msg=`Dropping ${selJail.type} — click a highlighted square.`;
+  }
+  if(selSq&&board[selSq]) msg=`${pName(board[selSq])} selected. ${highlights.length} legal square(s).`;
+  if(consecutiveCheckTurns>0&&!gameOver) msg+=' ⚔ RAJA under pursuit!';
+  setStatus(msg);
+}
+
+function setStatus(msg){ document.getElementById('statusText').textContent=msg; }
+
+// ════════════════════════════════════════════════════════
+// HELPERS
+// ════════════════════════════════════════════════════════
+function pName(p)   { return p.side==='igto'?INFO[p.type].igName:INFO[p.type].mwName; }
+function capName(s) { return s==='igto'?'Igto':'Mawdige'; }
+
+function setScoringMode(mode){
+  scoringMode=mode;
+  document.getElementById('sFriendly').classList.toggle('active',mode==='friendly');
+  document.getElementById('sCompetitive').classList.toggle('active',mode==='competitive');
+  if(sessionRecord) sessionRecord.scoringMode=mode;
+  renderSpecial();
+}
+
+function log(msg,cls=''){
+  const el=document.getElementById('gameLog');
+  const d=document.createElement('div'); d.className='le '+cls; d.textContent=msg;
+  el.appendChild(d); el.scrollTop=el.scrollHeight;
+}
+
+// ════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════
+initSessionRecord();
+initBoard();
+renderAll();
+log('Session begins. Round 1. Mawdige moves first.','sys');
+</script>
+</body>
+</html>
