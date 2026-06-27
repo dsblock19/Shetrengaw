@@ -79,13 +79,53 @@ cp "${REPO_DIR}/game_files/shetrengaw_html/api/game_api.php" "${WEB_DIR}/api/gam
 cp "${REPO_DIR}/game_files/shetrengaw_html/api/new_game.php" "${WEB_DIR}/api/new_game.php"
 cp "${REPO_DIR}/game_files/shetrengaw_html/api/setup.sql" "${WEB_DIR}/api/setup.sql"
 
-# Set correct ownership and permissions for Apache
+# Copy piece and board images
+mkdir -p "${WEB_DIR}/images"
+cp -r "${REPO_DIR}/game_files/images/"* "${WEB_DIR}/images/"
+
+# Set correct ownership and permissions for Apache Shetrengaw directory
 chown -R www-data:www-data "$WEB_DIR"
 chmod -R 755 "$WEB_DIR"
 
-echo -e " - Files deployed successfully to ${WEB_DIR}."
+echo -e " - Standalone game deployed successfully to ${WEB_DIR}."
 
-echo -e "\n4. Verifying Apache service configuration..."
+echo -e "\n4. Deploying WordPress Plugin..."
+WP_PLUGIN_DIR="/var/www/html/wp-content/plugins/shetrengaw"
+mkdir -p "$WP_PLUGIN_DIR"
+cp -r "${REPO_DIR}/wp-plugin/shetrengaw/"* "$WP_PLUGIN_DIR/"
+
+# Set ownership and permissions for plugin directory
+chown -R www-data:www-data "$WP_PLUGIN_DIR"
+chmod -R 755 "$WP_PLUGIN_DIR"
+
+echo -e " - WordPress plugin deployed to ${WP_PLUGIN_DIR}."
+
+echo -e "\n5. Activating WordPress Plugin..."
+if [ -f "/var/www/html/wp-load.php" ]; then
+  php -r "
+    define('WP_ADMIN', true);
+    require_once '/var/www/html/wp-load.php';
+    require_once ABSPATH . 'wp-admin/includes/plugin.php';
+    if (!is_plugin_active('shetrengaw/shetrengaw.php')) {
+        activate_plugin('shetrengaw/shetrengaw.php');
+        echo 'WordPress plugin activated successfully!\n';
+    } else {
+        echo 'WordPress plugin is already active.\n';
+    }
+  "
+  if [ -f "/home/sg/BlockMania/scripts/setup_silly_goat.php" ]; then
+      echo "Configuring Silly Goat pages..."
+      php "/home/sg/BlockMania/scripts/setup_silly_goat.php"
+  fi
+  if [ -f "/home/sg/BlockMania/scripts/refresh_homepage.php" ]; then
+      echo "Refreshing homepage layout..."
+      php "/home/sg/BlockMania/scripts/refresh_homepage.php"
+  fi
+else
+  echo -e "${RED}Warning: wp-load.php not found at /var/www/html/. Skipping plugin activation.${NC}"
+fi
+
+echo -e "\n6. Verifying Apache service configuration..."
 systemctl restart apache2
 
 # Get local IP
@@ -94,10 +134,11 @@ IP_ADDRESSES=$(hostname -I | awk '{print $1}')
 echo -e "${GREEN}==================================================${NC}"
 echo -e "${GREEN}           Setup Completed Successfully!          ${NC}"
 echo -e "${GREEN}==================================================${NC}"
-echo -e "You can now play Shetrengaw Online."
-echo -e "Local browser URL:    http://localhost/shetrengaw/"
+echo -e "You can now play Shetrengaw Portal on WordPress."
+echo -e "Local homepage URL:   http://localhost/"
+echo -e "Local portal URL:     http://localhost/shetrengaw-portal/"
 if [ ! -z "$IP_ADDRESSES" ]; then
-  echo -e "Network browser URL:  http://${IP_ADDRESSES}/shetrengaw/"
+  echo -e "Network portal URL:   http://${IP_ADDRESSES}/shetrengaw-portal/"
 fi
 echo -e "Database name:        ${DB_NAME}"
 echo -e "Database user:        ${DB_USER}"

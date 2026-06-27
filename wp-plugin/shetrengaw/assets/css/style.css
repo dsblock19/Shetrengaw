@@ -1,0 +1,311 @@
+/* ════════════════════════════════════════════════════════
+   SHETRENGAW PORTAL SYSTEM DESIGN SYSTEM & CSS
+   ════════════════════════════════════════════════════════ */
+
+.shtr-portal-container {
+    --bg:         #1a1209;
+    --bg2:        #241a0e;
+    --bg3:        #2e2010;
+    --gold:       #c9a84c;
+    --gold2:      #e8c870;
+    --gold-dim:   #7a6030;
+    --border:     #6a5030;
+    --text:       #f0e6c8;
+    --text-dim:   #a09070;
+    --igto:       #4a8fc4;
+    --maw:        #c44a4a;
+
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Crimson Text', Georgia, serif;
+    font-size: 1.1rem;
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    max-width: 1200px;
+    margin: 20px auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background-image: 
+        radial-gradient(ellipse at 20% 20%, rgba(201, 168, 76, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(201, 168, 76, 0.03) 0%, transparent 50%);
+}
+
+/* ── NAVIGATION ── */
+.shtr-nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 15px;
+    flex-wrap: wrap;
+}
+.shtr-nav-item {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    padding: 10px 20px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text-dim) !important;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}
+.shtr-nav-item:hover {
+    color: var(--gold) !important;
+    border-color: var(--gold);
+    background: rgba(201, 168, 76, 0.06);
+}
+.shtr-nav-item.active {
+    color: var(--bg) !important;
+    background: var(--gold);
+    border-color: var(--gold);
+    font-weight: 700;
+}
+
+/* ── HERO HEADER ── */
+.shtr-hero {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px 0;
+    border-bottom: 1px double var(--border);
+}
+.shtr-title {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 0.25em;
+    margin: 0 0 5px 0;
+    text-shadow: 0 0 30px rgba(201, 168, 76, 0.2);
+}
+.shtr-subtitle {
+    font-family: 'Crimson Text', Georgia, serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--text-dim);
+    margin: 0;
+    letter-spacing: 0.05em;
+}
+
+/* ── CARDS ── */
+.shtr-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.main-intro {
+    border-left: 5px solid var(--gold);
+}
+.shtr-intro-text {
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+.shtr-intro-text:last-child {
+    margin-bottom: 0;
+}
+.shtr-section-title {
+    font-family: 'Cinzel', Georgia, serif;
+    color: var(--gold);
+    font-size: 1.8rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+    margin: 0 0 20px 0;
+}
+.shtr-sub-title {
+    font-family: 'Cinzel', Georgia, serif;
+    color: var(--gold2);
+    font-size: 1.3rem;
+    margin: 25px 0 15px 0;
+}
+
+/* ── HOME MENU GRID ── */
+.shtr-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+.shtr-menu-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 30px;
+    text-decoration: none !important;
+    color: var(--text) !important;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.shtr-menu-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+    box-shadow: 0 8px 25px rgba(201, 168, 76, 0.15);
+}
+.card-rules { border-top: 5px solid var(--text-dim); }
+.card-game { border-top: 5px solid var(--gold); }
+.card-gallery { border-top: 5px solid var(--gold-dim); }
+
+.shtr-menu-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: block;
+}
+.shtr-menu-card h3 {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 1.4rem;
+    margin: 0 0 10px 0;
+    color: var(--gold2);
+}
+.shtr-menu-card p {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+    flex-grow: 1;
+}
+.shtr-card-btn {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--gold);
+    align-self: flex-start;
+    transition: color 0.2s;
+}
+.shtr-menu-card:hover .shtr-card-btn {
+    color: var(--text);
+}
+
+/* ── RULES TABLES & LISTS ── */
+.shtr-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1rem;
+}
+.shtr-table th, .shtr-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(106, 80, 48, 0.3);
+}
+.shtr-table th {
+    font-family: 'Cinzel', Georgia, serif;
+    color: var(--gold);
+    font-weight: 700;
+    background: var(--bg3);
+}
+.shtr-table tr:hover {
+    background: rgba(201, 168, 76, 0.03);
+}
+.shtr-list {
+    line-height: 1.8;
+    padding-left: 20px;
+    margin: 15px 0;
+}
+.shtr-list li {
+    margin-bottom: 8px;
+}
+
+/* ── GAME EMBED ── */
+.shtr-game-wrapper {
+    display: flex;
+    justify-content: center;
+    background: var(--bg);
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+.shtr-game-iframe {
+    width: 100%;
+    height: 870px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* ── GALLERY ── */
+.shtr-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+.shtr-piece-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: border-color 0.2s;
+}
+.shtr-piece-card:hover {
+    border-color: var(--gold-dim);
+}
+.shtr-piece-images {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 6px;
+    width: 100%;
+}
+.shtr-piece-images img {
+    width: 110px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 4px;
+    border: 1px solid rgba(106, 80, 48, 0.2);
+    transition: transform 0.2s;
+}
+.shtr-piece-images img:hover {
+    transform: scale(1.08);
+}
+.shtr-piece-card h4 {
+    font-family: 'Cinzel', Georgia, serif;
+    color: var(--gold);
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+}
+.shtr-piece-card .role {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+}
+.shtr-piece-card .desc {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* ── RESPONSIVE SCALING ── */
+@media (max-width: 768px) {
+    .shtr-portal-container {
+        padding: 15px;
+    }
+    .shtr-title {
+        font-size: 2.2rem;
+    }
+    .shtr-nav-item {
+        flex: 1;
+        text-align: center;
+        padding: 8px 10px;
+        font-size: 0.75rem;
+    }
+    .shtr-piece-images img {
+        width: 90px;
+    }
+}

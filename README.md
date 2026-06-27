@@ -62,8 +62,7 @@ Full rules are in the [rulebook](rules/Shetrengaw_Rulebook_v7.docx).
 - Igto wins by capturing the RAJA, or by keeping it in check for
   3 consecutive turns (Persistent Pursuit)
 - Mawdige wins by capturing the RAWDAW and then 2 additional pieces
-- Jail Break Loss: if your pieces on the board fall below your pieces
-  held in your jail, you lose immediately
+- Jail Break Loss: If your pieces on the board fall below the count of your pieces held your jail, you lose immediately.
 
 ---
 
